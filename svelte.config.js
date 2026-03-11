@@ -3,7 +3,12 @@ import adapter from '@sveltejs/adapter-vercel';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: { adapter: adapter() },
+	kit: { 
+    adapter: adapter(),
+    alias: {
+      "@/*": "./path/to/lib/*",
+    }, 
+  },
 	preprocess: [mdsvex()],
 	extensions: ['.svelte', '.svx']
 };
