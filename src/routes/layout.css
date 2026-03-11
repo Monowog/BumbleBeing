@@ -109,5 +109,8 @@
 }
 
 .header {
+  display: flex;
+  align-items: end;
+  width: 10em;
   background-color: var(--color-background);
 }
