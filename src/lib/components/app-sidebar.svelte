@@ -8,13 +8,8 @@
   import FrameIcon from "@lucide/svelte/icons/frame";
   import PieChartIcon from "@lucide/svelte/icons/pie-chart";
   import MapIcon from "@lucide/svelte/icons/map";
-  import CommandIcon from "@lucide/svelte/icons/command";
+  import BeeIcon from "@lucide/svelte/icons/venetian-mask";
   const data = {
-    user: {
-      name: "shadcn",
-      email: "m@example.com",
-      avatar: "/avatars/shadcn.jpg",
-    },
     navMain: [
       {
         title: "Playground",
@@ -151,11 +146,10 @@
               <div
                 class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
               >
-                <CommandIcon class="size-4" />
+                <BeeIcon class="size-6" />
               </div>
-              <div class="grid flex-1 text-start text-sm leading-tight">
-                <span class="truncate font-medium">Acme Inc</span>
-                <span class="truncate text-xs">Enterprise</span>
+              <div class="grid flex-1 text-start leading-tight">
+                <span class="truncate text-2xl"><strong>BumbleBeing</strong></span>
               </div>
             </a>
           {/snippet}

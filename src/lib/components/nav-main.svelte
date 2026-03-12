@@ -47,7 +47,7 @@
                   </Sidebar.MenuAction>
                 {/snippet}
               </Collapsible.Trigger>
-              <Collapsible.Content>
+              <Collapsible.Content class="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
                 <Sidebar.MenuSub>
                   {#each item.items as subItem (subItem.title)}
                     <Sidebar.MenuSubItem>
