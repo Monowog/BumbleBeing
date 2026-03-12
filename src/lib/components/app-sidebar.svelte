@@ -139,7 +139,6 @@
   import NavMain from "./nav-main.svelte";
   import NavProjects from "./nav-projects.svelte";
   import NavSecondary from "./nav-secondary.svelte";
-  import NavUser from "./nav-user.svelte";
   let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 <Sidebar.Root class="top-(--header-height) h-[calc(100svh-var(--header-height))]!" {...restProps}>
@@ -170,6 +169,6 @@
     <NavSecondary items={data.navSecondary} class="mt-auto" />
   </Sidebar.Content>
   <Sidebar.Footer>
-    <NavUser user={data.user} />
+    <span>Made using <a href="https://shadcn-svelte.com/">shadcn-svelte</a></span>
   </Sidebar.Footer>
 </Sidebar.Root>
