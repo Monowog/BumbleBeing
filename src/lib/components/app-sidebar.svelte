@@ -8,7 +8,7 @@
   import FrameIcon from "@lucide/svelte/icons/frame";
   import PieChartIcon from "@lucide/svelte/icons/pie-chart";
   import MapIcon from "@lucide/svelte/icons/map";
-  import BeeIcon from "@lucide/svelte/icons/venetian-mask";
+  import Icon from "@iconify/svelte";
   const data = {
     navMain: [
       {
@@ -146,10 +146,10 @@
               <div
                 class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
               >
-                <BeeIcon class="size-6" />
+                <Icon icon="lucide-lab:bee" width=2em height=2em/>
               </div>
               <div class="grid flex-1 text-start leading-tight">
-                <span class="truncate text-2xl"><strong>BumbleBeing</strong></span>
+                <span class="truncate text-2xl font-extrabold">BumbleBeing</span>
               </div>
             </a>
           {/snippet}
