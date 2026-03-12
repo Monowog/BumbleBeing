@@ -1,7 +1,7 @@
 <script lang="ts">
-  import type { Component, ComponentProps } from "svelte";
+  import type { ComponentProps } from "svelte";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import { resolve } from "$app/paths";
+  import Icon from "@iconify/svelte";
   let {
     items,
     ...restProps
@@ -9,7 +9,7 @@
     items: {
       title: string;
       url: string;
-      icon: Component;
+      icon: string;
     }[];
   } & ComponentProps<typeof Sidebar.Group> = $props();
 </script>
@@ -20,8 +20,8 @@
         <Sidebar.MenuItem>
           <Sidebar.MenuButton size="sm">
             {#snippet child({ props })}
-              <a href={resolve("/")} {...props}> 
-                <item.icon />
+              <a rel="external" href={item.url} {...props}> 
+                <Icon icon={item.icon} />
                 <span>{item.title}</span>
               </a>
             {/snippet}

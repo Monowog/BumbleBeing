@@ -1,51 +1,43 @@
 <script lang="ts" module>
-  import SquareTerminalIcon from "@lucide/svelte/icons/square-terminal";
-  import BotIcon from "@lucide/svelte/icons/bot";
-  import BookOpenIcon from "@lucide/svelte/icons/book-open";
-  import Settings2Icon from "@lucide/svelte/icons/settings-2";
-  import LifeBuoyIcon from "@lucide/svelte/icons/life-buoy";
-  import SendIcon from "@lucide/svelte/icons/send";
-  import FrameIcon from "@lucide/svelte/icons/frame";
-  import PieChartIcon from "@lucide/svelte/icons/pie-chart";
-  import MapIcon from "@lucide/svelte/icons/map";
   import Icon from "@iconify/svelte";
+  import { resolve } from "$app/paths";
   const data = {
     navMain: [
       {
-        title: "Playground",
-        url: "#",
-        icon: SquareTerminalIcon,
+        title: "About Me",
+        url: "/about-me",
+        icon: "mdi:comment-person-outline",
         isActive: true,
         items: [
           {
-            title: "History",
-            url: "#",
+            title: "Education",
+            url: "/about-me/education",
           },
           {
-            title: "Starred",
-            url: "#",
+            title: "Experience",
+            url: "/about-me/experience",
           },
           {
-            title: "Settings",
-            url: "#",
+            title: "Hobbies",
+            url: "/about-me/hobbies",
           },
         ],
       },
       {
         title: "Models",
         url: "#",
-        icon: BotIcon,
+        icon: "mingcute:robot-line",
         items: [
           {
-            title: "Genesis",
+            title: "Bone Fracture Detector",
             url: "#",
           },
           {
-            title: "Explorer",
+            title: "Garbage Classifier",
             url: "#",
           },
           {
-            title: "Quantum",
+            title: "NFL Victor Predictor",
             url: "#",
           },
         ],
@@ -53,7 +45,7 @@
       {
         title: "Documentation",
         url: "#",
-        icon: BookOpenIcon,
+        icon: "solar:book-2-linear",
         items: [
           {
             title: "Introduction",
@@ -73,57 +65,34 @@
           },
         ],
       },
-      {
-        title: "Settings",
-        url: "#",
-        icon: Settings2Icon,
-        items: [
-          {
-            title: "General",
-            url: "#",
-          },
-          {
-            title: "Team",
-            url: "#",
-          },
-          {
-            title: "Billing",
-            url: "#",
-          },
-          {
-            title: "Limits",
-            url: "#",
-          },
-        ],
-      },
     ],
     navSecondary: [
       {
-        title: "Support",
-        url: "#",
-        icon: LifeBuoyIcon,
+        title: "LinkedIn",
+        url: "https://www.linkedin.com/in/jackson-cmelak/s",
+        icon: "mdi:linkedin",
       },
       {
-        title: "Feedback",
-        url: "#",
-        icon: SendIcon,
+        title: "Github",
+        url: "https://github.com/Monowog",
+        icon: "mdi:github",
       },
     ],
     projects: [
       {
-        name: "Design Engineering",
+        name: "DNDIgor",
         url: "#",
-        icon: FrameIcon,
+        icon: "arcticons:dnd-5e-character-keep",
       },
       {
-        name: "Sales & Marketing",
+        name: "Multi-Task King",
         url: "#",
-        icon: PieChartIcon,
+        icon: "tabler:cards",
       },
       {
-        name: "Travel",
+        name: "Magic: the Glyphening",
         url: "#",
-        icon: MapIcon,
+        icon: "streamline-ultimate:keyboard",
       },
     ],
   };
@@ -134,6 +103,7 @@
   import NavMain from "./nav-main.svelte";
   import NavProjects from "./nav-projects.svelte";
   import NavSecondary from "./nav-secondary.svelte";
+	import SidebarSeparator from "./ui/sidebar/sidebar-separator.svelte";
   let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 <Sidebar.Root class="top-(--header-height) h-[calc(100svh-var(--header-height))]!" {...restProps}>
@@ -142,9 +112,9 @@
       <Sidebar.MenuItem>
         <Sidebar.MenuButton size="lg">
           {#snippet child({ props })}
-            <a href="##" {...props}>
+            <a href={resolve("/")} {...props}>
               <div
-                class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
+                class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-10 items-center justify-center rounded-lg"
               >
                 <Icon icon="lucide-lab:bee" width=2em height=2em/>
               </div>
@@ -159,6 +129,7 @@
   </Sidebar.Header>
   <Sidebar.Content>
     <NavMain items={data.navMain} />
+    <SidebarSeparator />
     <NavProjects projects={data.projects} />
     <NavSecondary items={data.navSecondary} class="mt-auto" />
   </Sidebar.Content>

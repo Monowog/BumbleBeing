@@ -7,10 +7,13 @@ const config = {
     adapter: adapter(),
     alias: {
       "@/*": "./path/to/lib/*",
-    }, 
+    } 
   },
 	preprocess: [mdsvex()],
-	extensions: ['.svelte', '.svx']
+	extensions: ['.svelte', '.svx'],
+  vitePlugin:{
+    inspector: true
+  }
 };
 
 export default config;

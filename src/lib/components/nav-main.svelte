@@ -1,8 +1,7 @@
 <script lang="ts">
-  import type { Component } from "svelte";
-  import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+  import Icon from "@iconify/svelte";
   import { resolve } from "$app/paths";
 
   let {
@@ -11,7 +10,7 @@
     items: {
       title: string;
       url: string;
-      icon: Component;
+      icon: string;
       isActive?: boolean;
       items?: {
         title: string;
@@ -21,7 +20,7 @@
   } = $props();
 </script>
 <Sidebar.Group>
-  <Sidebar.GroupLabel>Platform</Sidebar.GroupLabel>
+  <Sidebar.GroupLabel>The Hive</Sidebar.GroupLabel>
   <Sidebar.Menu>
     {#each items as item (item.title)}
       <Collapsible.Root open={item.isActive}>
@@ -30,7 +29,7 @@
             <Sidebar.MenuButton tooltipContent={item.title}>
               {#snippet child({ props })}
                 <a href={resolve(item.url as "/")} {...props}>
-                  <item.icon />
+                  <Icon icon={item.icon} />
                   <span>{item.title}</span>
                 </a>
               {/snippet}
@@ -42,7 +41,7 @@
                     {...props}
                     class="data-[state=open]:rotate-90"
                   >
-                    <ChevronRightIcon />
+                    <Icon icon="line-md:chevron-right" />
                     <span class="sr-only">Toggle</span>
                   </Sidebar.MenuAction>
                 {/snippet}

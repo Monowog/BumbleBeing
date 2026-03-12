@@ -3,9 +3,9 @@
   import FolderIcon from "@lucide/svelte/icons/folder";
   import EllipsisIcon from "@lucide/svelte/icons/ellipsis";
   import ShareIcon from "@lucide/svelte/icons/share";
-  import Trash2Icon from "@lucide/svelte/icons/trash-2";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import Icon from "@iconify/svelte";
 	import { resolve } from "$app/paths";
 
   let {
@@ -14,7 +14,7 @@
     projects: {
       name: string;
       url: string;
-      icon: Component;
+      icon: string;
     }[];
   } = $props();
   const sidebar = Sidebar.useSidebar();
@@ -27,7 +27,7 @@
         <Sidebar.MenuButton>
           {#snippet child({ props })}
             <a href={resolve(item.url as "/")} {...props}>
-              <item.icon />
+              <Icon icon={item.icon}/>
               <span>{item.name}</span>
             </a>
           {/snippet}
@@ -48,16 +48,11 @@
           >
             <DropdownMenu.Item>
               <FolderIcon class="text-muted-foreground" />
-              <span>View Project</span>
+              <span>Github</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item>
               <ShareIcon class="text-muted-foreground" />
-              <span>Share Project</span>
-            </DropdownMenu.Item>
-            <DropdownMenu.Separator />
-            <DropdownMenu.Item>
-              <Trash2Icon class="text-muted-foreground" />
-              <span>Delete Project</span>
+              <span>Project Details</span>
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
