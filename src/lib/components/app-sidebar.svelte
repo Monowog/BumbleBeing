@@ -168,7 +168,4 @@
     <NavProjects projects={data.projects} />
     <NavSecondary items={data.navSecondary} class="mt-auto" />
   </Sidebar.Content>
-  <Sidebar.Footer>
-    <span>Made using <a href="https://shadcn-svelte.com/">shadcn-svelte</a></span>
-  </Sidebar.Footer>
 </Sidebar.Root>

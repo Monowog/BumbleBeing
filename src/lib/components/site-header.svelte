@@ -20,10 +20,6 @@
         <Breadcrumb.Item>
           <Breadcrumb.Link href="/">Building Your Application</Breadcrumb.Link>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item>
-          <Breadcrumb.Page>Data Fetching</Breadcrumb.Page>
-        </Breadcrumb.Item>
       </Breadcrumb.List>
     </Breadcrumb.Root>
     <SearchForm class="w-full sm:ms-auto sm:w-auto" />
