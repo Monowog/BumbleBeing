@@ -1,8 +1,4 @@
 <script lang="ts">
-  import type { Component } from "svelte";
-  import FolderIcon from "@lucide/svelte/icons/folder";
-  import EllipsisIcon from "@lucide/svelte/icons/ellipsis";
-  import ShareIcon from "@lucide/svelte/icons/share";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import Icon from "@iconify/svelte";
@@ -20,7 +16,7 @@
   const sidebar = Sidebar.useSidebar();
 </script>
 <Sidebar.Group class="group-data-[collapsible=icon]:hidden">
-  <Sidebar.GroupLabel>Projects</Sidebar.GroupLabel>
+  <Sidebar.GroupLabel><span class="text-[.95rem]">Projects</span></Sidebar.GroupLabel>
   <Sidebar.Menu>
     {#each projects as item (item.name)}
       <Sidebar.MenuItem>
@@ -28,7 +24,7 @@
           {#snippet child({ props })}
             <a href={resolve(item.url as "/")} {...props}>
               <Icon icon={item.icon}/>
-              <span>{item.name}</span>
+              <span class="text-lg">{item.name}</span>
             </a>
           {/snippet}
         </Sidebar.MenuButton>
@@ -36,8 +32,8 @@
           <DropdownMenu.Trigger>
             {#snippet child({ props })}
               <Sidebar.MenuAction showOnHover {...props}>
-                <EllipsisIcon />
-                <span class="sr-only">More</span>
+                <Icon icon="gravity-ui:ellipsis"/>
+                <span class="sr-only text-lg">More</span>
               </Sidebar.MenuAction>
             {/snippet}
           </DropdownMenu.Trigger>
@@ -47,11 +43,11 @@
             align={sidebar.isMobile ? "end" : "start"}
           >
             <DropdownMenu.Item>
-              <FolderIcon class="text-muted-foreground" />
-              <span>Github</span>
+              <Icon icon="mynaui:github" class="text-muted-foreground" />
+              <span class="text-base">Github</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item>
-              <ShareIcon class="text-muted-foreground" />
+              <Icon icon="material-symbols:folder-outline" class="text-muted-foreground" />
               <span>Project Details</span>
             </DropdownMenu.Item>
           </DropdownMenu.Content>
@@ -60,8 +56,8 @@
     {/each}
     <Sidebar.MenuItem>
       <Sidebar.MenuButton>
-        <EllipsisIcon />
-        <span>More</span>
+        <Icon icon="gravity-ui:ellipsis"/>
+        <span class="text-lg ">More</span>
       </Sidebar.MenuButton>
     </Sidebar.MenuItem>
   </Sidebar.Menu>

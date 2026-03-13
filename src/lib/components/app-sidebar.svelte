@@ -82,7 +82,7 @@
       {
         name: "DNDIgor",
         url: "#",
-        icon: "arcticons:dnd-5e-character-keep",
+        icon: "simple-icons:dungeonsanddragons",
       },
       {
         name: "Multi-Task King",
