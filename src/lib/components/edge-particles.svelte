@@ -7,19 +7,27 @@
   let animationFrame: number;
   let particles: Particle[] = [];
 
+  let spawnRate = 0.2;
+  let mouseX = -9999;
+  let mouseY = -9999;
+
   const maxParticles = 300;
   const particleColor = '218, 165, 32'; 
-  const k = 0.001;                // spring constant
+  const k = 0.001;   // spring constant
   const friction = 0.97;          
-  const spawnRate = 0.25;
   const inset = 10;
   const popChance = 0.1;   
-  const popForce = 2;   
+  const popForce = 2;
+  const repelRadius = 80; 
+  const repelStrength = 1.2;
+  const trailColor = '128, 128, 128'; 
+  const trailLength = 8;
 
   class Particle {
     x: number; y: number; vx: number; vy: number;
     size: number; alpha: number;
     life: number;
+    trail: {x: number, y: number}[] = [];
     isExpiring: boolean = false;
     isDead: boolean = false;
 
@@ -37,9 +45,12 @@
       this.life = Math.random() * 200 + 150; 
     }
 
-    update(w: number, h: number): void {
+    update(w: number, h: number, mX: number, mY: number): void {
       this.life--;
       if (this.life <= 0) this.isExpiring = true;
+
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > trailLength) this.trail.shift();
 
       if (this.isExpiring) {
         this.alpha -= 0.01;
@@ -101,6 +112,16 @@
         }
       }
 
+      const dx = this.x - mX;
+      const dy = this.y - mY;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < repelRadius) {
+        const force = (repelRadius - distance) / repelRadius;
+        this.vx += (dx / distance) * force * repelStrength;
+        this.vy += (dy / distance) * force * repelStrength;
+      }
+
       this.vx *= friction;
       this.vy *= friction;
       this.x += this.vx;
@@ -109,6 +130,18 @@
 
     draw(c: CanvasRenderingContext2D, off: number): void {
       if (this.alpha <= 0) return;
+
+      for (let i = 0; i < this.trail.length; i++) {
+        const pos = this.trail[i];
+        const ratio = i / this.trail.length;
+        const trailAlpha = this.alpha * ratio * 0.5;
+        
+        c.beginPath();
+        c.arc(pos.x + off, pos.y + off, this.size * ratio, 0, Math.PI * 2);
+        c.fillStyle = `rgba(${trailColor}, ${trailAlpha})`;
+        c.fill();
+      }
+
       c.beginPath();
       c.arc(this.x + off, this.y + off, this.size, 0, Math.PI * 2);
       c.fillStyle = `rgba(${particleColor}, ${this.alpha})`;
@@ -130,12 +163,23 @@
 
     for (let i = particles.length - 1; i >= 0; i--) {
       const p = particles[i];
-      p.update(w, h);
+      p.update(w, h, mouseX, mouseY);
       p.draw(ctx, 50);
       if (p.isDead) particles.splice(i, 1);
     }
 
     animationFrame = requestAnimationFrame(animate);
+  };
+
+  const handleMouseMove = (e: MouseEvent) => {
+    const rect = container.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  };
+
+  const handleMouseLeave = () => {
+    mouseX = -9999;
+    mouseY = -9999;
   };
 
   onMount(() => {
@@ -161,7 +205,10 @@
   });
 </script>
 
-<div class="wrapper" bind:this={container}>
+<div class="wrapper" bind:this={container} 
+  on:mousemove={handleMouseMove}
+  on:mouseleave={handleMouseLeave} 
+  role="complementary">
   <canvas bind:this={canvas}></canvas>
   <div class="content">
     <slot />

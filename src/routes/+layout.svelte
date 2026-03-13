@@ -10,7 +10,7 @@
   onNavigate(() => {
     if(!document.startViewTransition) return;
 
-    return new Promise((fulfill) => {
+    return new Promise((fulfill: () => void) => {
       document.startViewTransition(() => new Promise(fulfill));
     });
   });
