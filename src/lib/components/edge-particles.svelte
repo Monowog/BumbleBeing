@@ -10,11 +10,11 @@
   const maxParticles = 300;
   const particleColor = '218, 165, 32'; 
   const k = 0.001;                // spring constant
-  const friction = 0.98;          
+  const friction = 0.97;          
   const spawnRate = 0.25;
   const inset = 10;
-  const popChance = 0.04;   
-  const popForce = 6;   
+  const popChance = 0.1;   
+  const popForce = 2;   
 
   class Particle {
     x: number; y: number; vx: number; vy: number;
@@ -64,7 +64,7 @@
         if (this.y > bottomWall) this.vy += (bottomWall - this.y) * k;
       } else {
         // drift to keep them floating near the border
-        const pull = 0.06;
+        const pull = 0.04;
         const distLeft = this.x - leftWall;
         const distRight = rightWall - this.x;
         const distTop = this.y - topWall;
