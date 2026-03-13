@@ -17,7 +17,7 @@
   const friction = 0.97;          
   const inset = 10;
   const popChance = 0.1;   
-  const popForce = 2;
+  const popForce = 1;
   const repelRadius = 80; 
   const repelStrength = 1.2;
   const trailColor = '128, 128, 128'; 
@@ -98,14 +98,14 @@
         }
         else if (minDist === distTop) {
           this.vy -= pull;
-          if(Math.random()*2 < popChance){
+          if(Math.random() < popChance){
             this.vy += popForce * Math.random();
             this.vx += (Math.random() - 0.5) * popForce;
           }
         }
         else if (minDist === distBottom) {
           this.vy += pull;
-          if(Math.random()*2 < popChance){
+          if(Math.random() < popChance){
             this.vy -= popForce * Math.random();
             this.vx += (Math.random() - 0.5) * popForce;
           }

@@ -1,14 +1,12 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
   import SearchForm from "./search-form.svelte";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
+  import Breadcrumbs from "$lib/components/breadcrumbs.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import { Separator } from "$lib/components/ui/separator/index.js";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import ModeButton from "$lib/components/ui/mode-button/mode-button.svelte";
-	import BreadcrumbSeparator from "./ui/breadcrumb/breadcrumb-separator.svelte";
+  import { ModeButton } from "$lib/components/ui/mode-button/index.js";
 
-  let pathNode = ["Home"];
   const sidebar = Sidebar.useSidebar();
 </script>
 <header class="bg-background sticky top-0 z-50 flex w-full items-center border-b">
@@ -17,20 +15,7 @@
       <Icon icon="akar-icons:sidebar-left" class="size-6"/>
     </Button>
     <Separator orientation="vertical" class="me-2 h-4" />
-    <Breadcrumb.Root class="hidden sm:block">
-      <Breadcrumb.List>
-        {#each pathNode as path, index (path)}
-          {#if index > 0}
-            <Breadcrumb.Item>
-              <BreadcrumbSeparator />
-            </Breadcrumb.Item>
-          {/if}
-          <Breadcrumb.Item>
-            <Breadcrumb.Link href="/"><span class="text-xl">{pathNode[index]}</span></Breadcrumb.Link>
-          </Breadcrumb.Item>
-        {/each}
-      </Breadcrumb.List>
-    </Breadcrumb.Root>
+    <Breadcrumbs />
     <SearchForm class="w-full sm:ms-auto sm:w-auto" />
     <ModeButton />
   </div>
