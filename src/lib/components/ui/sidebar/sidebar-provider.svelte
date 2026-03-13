@@ -47,7 +47,7 @@
 		)}
 		bind:this={ref}
 		{...restProps}
-	>
+    >
 		{@render children?.()}
 	</div>
 </Tooltip.Provider>

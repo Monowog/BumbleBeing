@@ -8,7 +8,7 @@
   import ModeButton from "$lib/components/ui/mode-button/mode-button.svelte";
 	import BreadcrumbSeparator from "./ui/breadcrumb/breadcrumb-separator.svelte";
 
-  let pathNode = ["Home", "About-Me", "Education"];
+  let pathNode = ["Home"];
   const sidebar = Sidebar.useSidebar();
 </script>
 <header class="bg-background sticky top-0 z-50 flex w-full items-center border-b">

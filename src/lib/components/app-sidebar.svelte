@@ -118,8 +118,8 @@
               >
                 <Icon icon="lucide-lab:bee" width=2em height=2em/>
               </div>
-              <div class="grid flex-1 text-start leading-tight">
-                <span class="truncate text-2xl font-extrabold">BumbleBeing</span>
+              <div class="absolute inset-s-15 grid flex-1">
+                <span class="text-2xl font-extrabold">BumbleBeing</span>
               </div>
             </a>
           {/snippet}

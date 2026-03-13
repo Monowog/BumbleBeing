@@ -21,7 +21,7 @@
           <Sidebar.MenuButton size="sm">
             {#snippet child({ props })}
               <a rel="external" href={item.url} {...props}> 
-                <Icon icon={item.icon} style="font-size=24"/>
+                <Icon icon={item.icon}/>
                 <span class="text-[1.2rem]">{item.title}</span>
               </a>
             {/snippet}
