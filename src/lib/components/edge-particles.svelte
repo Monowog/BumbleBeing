@@ -10,6 +10,7 @@
   let spawnRate = 0.2;
   let mouseX = -9999;
   let mouseY = -9999;
+  let isActive = true;
 
   const maxParticles = 300;
   const particleColor = '218, 165, 32'; 
@@ -157,7 +158,7 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = 'lighter';
 
-    if (particles.length < maxParticles && Math.random() < spawnRate) {
+    if (isActive && particles.length < maxParticles && Math.random() < spawnRate) {
       particles.push(new Particle(w, h));
     }
 
@@ -203,9 +204,13 @@
       ro.disconnect();
     };
   });
+
+  export function toggleBees(){
+    isActive = isActive ? false : true;
+  }
 </script>
 
-<div class="wrapper" bind:this={container} 
+<div class="flex wrapper items-center justify-center" bind:this={container} 
   on:mousemove={handleMouseMove}
   on:mouseleave={handleMouseLeave} 
   role="complementary">

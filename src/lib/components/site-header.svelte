@@ -6,6 +6,7 @@
   import { Separator } from "$lib/components/ui/separator/index.js";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { ModeButton } from "$lib/components/ui/mode-button/index.js";
+  import { particleRef } from "$lib/store";
 
   const sidebar = Sidebar.useSidebar();
 </script>
@@ -18,5 +19,8 @@
     <Breadcrumbs />
     <SearchForm class="w-full sm:ms-auto sm:w-auto" />
     <ModeButton />
+    <Button class="size-10" variant="outline" onclick={$particleRef?.toggleBees}>
+      <Icon icon="lucide-lab:bee" class="size-6"/>
+    </Button>
   </div>
 </header>

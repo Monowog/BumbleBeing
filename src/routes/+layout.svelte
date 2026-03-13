@@ -6,6 +6,7 @@
   import SiteHeader from "$lib/components/site-header.svelte";
   import AppSidebar from "$lib/components/app-sidebar.svelte";
   import EdgeParticles from "$lib/components/edge-particles.svelte";
+  import { particleRef } from '$lib/store';
 
   onNavigate(() => {
     if(!document.startViewTransition) return;
@@ -27,7 +28,7 @@
     <div class="flex flex-1">
       <AppSidebar />
       <main class="flex flex-1 flex-col gap-4 p-4">
-        <EdgeParticles>
+        <EdgeParticles bind:this={$particleRef}>
           {@render children()}
         </EdgeParticles>
       </main>
