@@ -20,7 +20,7 @@
   } = $props();
 </script>
 <Sidebar.Group>
-  <Sidebar.GroupLabel><span class="text-[0.95rem]">The Hive</span></Sidebar.GroupLabel>
+  <Sidebar.GroupLabel><span class="text-[0.95rem]">ArcHives</span></Sidebar.GroupLabel>
   <Sidebar.Menu>
     {#each items as item (item.title)}
       <Collapsible.Root open={item.isActive}>

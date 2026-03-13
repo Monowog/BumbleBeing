@@ -7,6 +7,10 @@
   import AppSidebar from "$lib/components/app-sidebar.svelte";
   import EdgeParticles from "$lib/components/edge-particles.svelte";
   import { particleRef } from '$lib/store';
+  import { dev } from '$app/environment';
+  import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+  injectAnalytics({ mode: dev ? 'development' : 'production' });
 
   onNavigate(() => {
     if(!document.startViewTransition) return;

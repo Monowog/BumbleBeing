@@ -8,7 +8,13 @@
   import { ModeButton } from "$lib/components/ui/mode-button/index.js";
   import { particleRef } from "$lib/store";
 
+  let beesActive = true;
   const sidebar = Sidebar.useSidebar();
+
+  function handleBeeClicked () {
+    beesActive = !beesActive;
+    $particleRef?.toggleBees();
+  }
 </script>
 <header class="bg-background sticky top-0 z-50 flex w-full items-center border-b">
   <div class="flex h-(--header-height) w-full items-center gap-2 px-4">
@@ -19,8 +25,17 @@
     <Breadcrumbs />
     <SearchForm class="w-full sm:ms-auto sm:w-auto" />
     <ModeButton />
-    <Button class="size-10" variant="outline" onclick={$particleRef?.toggleBees}>
-      <Icon icon="lucide-lab:bee" class="size-6"/>
+    <Button class="size-10" variant="outline" onclick={handleBeeClicked}>
+      {#if beesActive}
+        <Icon icon="mdi:beehive-outline" 
+          class="size-6"
+        />
+      {:else}
+        <Icon icon="mdi:beehive-off-outline"
+          class="absolute size-6 "
+        />
+      {/if}
+  <span class="sr-only">Toggle theme</span>
     </Button>
   </div>
 </header>
