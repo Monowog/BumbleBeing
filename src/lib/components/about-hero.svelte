@@ -26,27 +26,4 @@
     {/each}
   </div>
 </section>
-
-<style>
-  .image-container img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .caption {
-    margin: 1.5rem 0 2rem;
-    font-size: 1.2rem;
-    color: #000000;
-    font-style: italic;
-  }
-
-   .caption::dark {
-    margin: 1.5rem 0 2rem;
-    font-size: 1.2rem;
-    color: #cacaca;
-    font-style: italic;
-  }
-</style>
   

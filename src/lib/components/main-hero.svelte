@@ -2,7 +2,7 @@
   import { resolve } from "$app/paths";
 
   // Props for customization
-  export let imageSrc = "src/lib/assets/images/bee++.png";
+  export let imageSrc = "/images/bee++.png";
   export let altText = 'A Master of Bee++';
   export let caption = "Don't wait, see what the buzz is about.";
 </script>
