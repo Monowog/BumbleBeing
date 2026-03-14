@@ -1,5 +1,6 @@
 <script>
   import BeePlusPlus from "$lib/assets/images/Bee++.png";
+  import Button from "./ui/button/button.svelte";
   import { resolve } from "$app/paths";
 
   // Props for customization
@@ -16,26 +17,28 @@
       </div>
 
     <div class="caption-container">
-      <p class="text-xl md:text-2xl font-light text-slate-700 max-w-3xl leading-relaxed">
+      <p class="text-xl md:text-2xl font-light text-secondary max-w-3xl leading-relaxed">
         {caption}
       </p>
     </div>
 
     <div class="button-group w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <a href={resolve("/projects")} class="w-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
-        Explore Projects
-      </a>
-      
-      <a href={resolve("/about-me")} class="w-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
-        Meet Jackson
-      </a>
 
-      <a href={resolve("/blog")} class="w-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
+      <Button href={resolve("/about-me")} 
+      class="w-full h-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
+        Meet Jackson
+      </Button>
+
+      <Button href={resolve("/projects")} 
+      class="w-full h-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
+        Explore Projects
+      </Button>
+
+      <Button href={resolve("/blog")} 
+      class="w-full h-full bg-accent text-accent-foreground text-lg font-semibold py-5 rounded-lg shadow-md hover:-translate-y-1 transition-all text-center">
         Beelog
-      </a>
+      </Button>
 
     </div>
-
   </section>
 </div>
