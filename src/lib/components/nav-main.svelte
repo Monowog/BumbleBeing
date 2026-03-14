@@ -20,7 +20,7 @@
   } = $props();
 </script>
 <Sidebar.Group>
-  <Sidebar.GroupLabel><span class="text-[0.95rem]">ArcHives</span></Sidebar.GroupLabel>
+  <Sidebar.GroupLabel><span class="text-[1.2rem]">ArcHives</span></Sidebar.GroupLabel>
   <Sidebar.Menu>
     {#each items as item (item.title)}
       <Collapsible.Root open={item.isActive}>
@@ -29,8 +29,8 @@
             <Sidebar.MenuButton tooltipContent={item.title}>
               {#snippet child({ props })}
                 <a href={resolve(item.url as "/")} {...props}>
-                  <Icon icon={item.icon} />
-                  <span class="text-lg">{item.title}</span>
+                  <Icon icon={item.icon}/>
+                  <span class="text-[1.5rem]">{item.title}</span>
                 </a>
               {/snippet}
             </Sidebar.MenuButton>
@@ -53,7 +53,7 @@
                       <Sidebar.MenuSubButton>
                         {#snippet child({ props })}
                           <a href={resolve(subItem.url as "/")} {...props}>
-                            <span>{subItem.title}</span>
+                            <span class="text-xl">{subItem.title}</span>
                           </a>
                         {/snippet}
                       </Sidebar.MenuSubButton>

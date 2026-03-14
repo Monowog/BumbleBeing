@@ -7,7 +7,7 @@
   let animationFrame: number;
   let particles: Particle[] = [];
 
-  let spawnRate = 0.2;
+  let spawnRate = 0.23;
   let mouseX = -9999;
   let mouseY = -9999;
   let isActive = true;
@@ -15,12 +15,12 @@
   const maxParticles = 300;
   const particleColor = '218, 165, 32'; 
   const k = 0.001;   // spring constant
-  const friction = 0.97;          
+  const friction = 0.98;          
   const inset = 10;
-  const popChance = 0.1;   
-  const popForce = 1;
+  const popChance = 0.12;   
+  const popForce = .8;
   const repelRadius = 80; 
-  const repelStrength = 1.2;
+  const repelStrength = 0.8;
   const trailColor = '128, 128, 128'; 
   const trailLength = 8;
 
@@ -41,7 +41,7 @@
 
       this.vx = (Math.random() - 0.5) * 2;
       this.vy = (Math.random() - 0.5) * 2;
-      this.size = Math.random() * 1.5 + 1;
+      this.size = Math.random() * 2 + 1;
       this.alpha = 0; 
       this.life = Math.random() * 200 + 150; 
     }

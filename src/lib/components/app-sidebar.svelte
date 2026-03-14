@@ -24,7 +24,7 @@
         ],
       },
       {
-        title: "Models",
+        title: "ML Models",
         url: "#",
         icon: "mingcute:robot-line",
         items: [
@@ -43,7 +43,7 @@
         ],
       },
       {
-        title: "Documentation",
+        title: "Beelog",
         url: "#",
         icon: "solar:book-2-linear",
         items: [
@@ -97,6 +97,7 @@
     ],
   };
 </script>
+
 <script lang="ts">
   import type { ComponentProps } from "svelte";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
@@ -104,8 +105,10 @@
   import NavProjects from "./nav-projects.svelte";
   import NavSecondary from "./nav-secondary.svelte";
 	import SidebarSeparator from "./ui/sidebar/sidebar-separator.svelte";
+
   let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
+
 <Sidebar.Root class="top-(--header-height) h-[calc(100svh-var(--header-height))]!" {...restProps}>
   <Sidebar.Header>
     <Sidebar.Menu>
@@ -119,7 +122,7 @@
                 <Icon icon="lucide-lab:bee" width=2em height=2em/>
               </div>
               <div class="absolute inset-s-15 grid flex-1">
-                <span class="text-2xl font-extrabold">BumbleBeing</span>
+                <span class="text-3xl font-extrabold">BumbleBeing</span>
               </div>
             </a>
           {/snippet}
@@ -131,6 +134,7 @@
     <NavMain items={data.navMain} />
     <SidebarSeparator />
     <NavProjects projects={data.projects} />
+    <SidebarSeparator />
     <NavSecondary items={data.navSecondary} class="mt-auto" />
   </Sidebar.Content>
 </Sidebar.Root>

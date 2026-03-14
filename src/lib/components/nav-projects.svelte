@@ -16,7 +16,7 @@
   const sidebar = Sidebar.useSidebar();
 </script>
 <Sidebar.Group class="group-data-[collapsible=icon]:hidden">
-  <Sidebar.GroupLabel><span class="text-[.95rem]">Projects</span></Sidebar.GroupLabel>
+  <Sidebar.GroupLabel><span class="text-[1.2rem]">Projects</span></Sidebar.GroupLabel>
   <Sidebar.Menu>
     {#each projects as item (item.name)}
       <Sidebar.MenuItem>
@@ -24,7 +24,7 @@
           {#snippet child({ props })}
             <a href={resolve(item.url as "/")} {...props}>
               <Icon icon={item.icon}/>
-              <span class="text-lg">{item.name}</span>
+              <span class="text-[1.4rem]">{item.name}</span>
             </a>
           {/snippet}
         </Sidebar.MenuButton>
@@ -43,12 +43,12 @@
             align={sidebar.isMobile ? "end" : "start"}
           >
             <DropdownMenu.Item>
-              <Icon icon="mynaui:github" class="text-muted-foreground" />
-              <span class="text-base">Github</span>
+              <Icon icon="mynaui:github" class="text-muted-foreground size-4" />
+              <span class="text-[1rem]">Github</span>
             </DropdownMenu.Item>
             <DropdownMenu.Item>
-              <Icon icon="material-symbols:folder-outline" class="text-muted-foreground" />
-              <span>Project Details</span>
+              <Icon icon="material-symbols:folder-outline" class="text-muted-foreground size-4" />
+              <span class="text-[1rem]">Details</span>
             </DropdownMenu.Item>
           </DropdownMenu.Content>
         </DropdownMenu.Root>
@@ -57,7 +57,7 @@
     <Sidebar.MenuItem>
       <Sidebar.MenuButton>
         <Icon icon="gravity-ui:ellipsis"/>
-        <span class="text-lg ">More</span>
+        <span class="text-[1.4rem] ">More</span>
       </Sidebar.MenuButton>
     </Sidebar.MenuItem>
   </Sidebar.Menu>

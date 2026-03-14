@@ -10,7 +10,7 @@
     str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
 </script>
 
-<Breadcrumb.Root>
+<Breadcrumb.Root class="flex-row flex-nowrap">
   <Breadcrumb.List>
     <Breadcrumb.Item>
       <Breadcrumb.Link href="/">Home</Breadcrumb.Link>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Hero from "$lib/components/hero.svelte";
+  import AboutHero from "$lib/components/about-hero.svelte";
 </script>
 
-<Hero imageSrc="/src/lib/assets/images/BeeFace.jpeg" caption="Abuzz with great ideas"/>
+<AboutHero imageSrc="/src/lib/assets/images/BeeFace.jpeg" caption="Abuzz with great ideas"/>

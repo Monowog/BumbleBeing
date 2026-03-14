@@ -1,42 +1,20 @@
-# sv
+# BumbleBeing
+## AKA Jackson Cmelak's Portfolio/Personal Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+### To-Do List:
 
-## Creating a project
+- 'Task' (Precedence)
 
-If you're seeing this, you've probably already done this step. Congrats!
+#### Functionality
+- Implement search bar functionality (low)
+  - Create a dedicated search results page
+  - Go through all pages and return those whose blog content or title contains given substring
+  - Wrap the text in a button that links to that page
+- ~~Add proper hero segment to homepage (high)~~
+- Create custom component for showcasing projects/models (medium)
 
-```sh
-# create a new project
-npx sv create my-app
-```
+#### Aesthetics
+- Fix breadcrumb overflow for smaller screens (medium)
+- Add subtle background (hexagons?) (low)
+- ~~Increase text size for sidebar (high)~~
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.12.5 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography" sveltekit-adapter="adapter:vercel" mdsvex --install npm ./
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
