@@ -1,8 +1,8 @@
 <script>
+  import BeePlusPlus from "$lib/assets/images/Bee++.png";
   import { resolve } from "$app/paths";
 
   // Props for customization
-  export let imageSrc = "/images/bee++.png";
   export let altText = 'A Master of Bee++';
   export let caption = "Don't wait, see what the buzz is about.";
 </script>
@@ -11,7 +11,7 @@
   <section class="max-w-7xl w-full flex flex-col items-center gap-10 text-center">
     
     <div class="rounded-2xl border-4 border-amber-600 shadow-2xl overflow-hidden group">
-      <img src={imageSrc} alt={altText} class="w-full max-w-5xl h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+      <img src={BeePlusPlus} alt={altText} class="w-full max-w-5xl h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
       
       </div>
 
