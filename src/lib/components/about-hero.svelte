@@ -20,7 +20,7 @@
 
   <div class="flex-row gap-2 w-full items-stretch">
     {#each buttons as button, i (buttons[i])}
-      <Button variant="outline" class="button self-stretch">
+      <Button variant="honeycomb" class="button self-stretch">
         {button.text}
       </Button>
     {/each}
