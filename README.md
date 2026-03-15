@@ -12,6 +12,7 @@
   - Wrap the text in a button that links to that page
 - ~~Add proper hero segment to homepage (high)~~
 - Create custom component for showcasing projects/models (medium)
+- ~~Add resume to sidebar~~
 
 #### Aesthetics
 - ~~Add toggleable bee particles~~

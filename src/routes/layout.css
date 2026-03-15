@@ -64,7 +64,7 @@
 }
 
 .dark {
-  --background: oklch(17.107% 0.03739 68.55);
+  --background: oklch(15.614% 0.03452 66.914);
   --foreground: oklch(0.9219 0 0);
   --card: oklch(0.2686 0 0);
   --card-foreground: oklch(0.9219 0 0);
@@ -99,8 +99,8 @@
   --button-primary: oklch(69.099% 0.15519 60.773);
   --button-secondary: oklch(79.545% 0.13008 53.711);
   --button-border: oklch(86.475% 0.10983 80.57);
-  --honeycomb-primary: oklch(17.107% 0.03739 68.55);
-  --honeycomb-secondary: oklch(22.748% 0.05351 59.655);
+  --honeycomb-primary: oklch(15.614% 0.03452 66.914);
+  --honeycomb-secondary: oklch(18.81% 0.05675 41.995);
   --font-sans: "Galdeano", ui-sans-serif, sans-serif, system-ui;
   --font-serif: Source Serif 4, serif;
   --font-mono: JetBrains Mono, monospace;
