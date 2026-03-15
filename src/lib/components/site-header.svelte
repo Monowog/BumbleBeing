@@ -43,7 +43,7 @@
           class="size-6 "
         />
       {/if}
-  <span class="sr-only">Toggle theme</span>
+  <span class="sr-only">Toggle Theme</span>
     </Button>
   </div>
 </header>
