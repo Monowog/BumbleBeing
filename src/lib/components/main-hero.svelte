@@ -5,7 +5,7 @@
 
   // Props for customization
   export let altText = 'A Master of Bee++';
-  export let caption = "See what all the buzz is about.";
+  export let caption = "Find out what all the buzz is about.";
 </script>
 
 <div class="flex items-center justify-center py-16 px-4">

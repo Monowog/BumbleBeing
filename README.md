@@ -16,7 +16,8 @@
 #### Aesthetics
 - ~~Add toggleable bee particles~~
 - Fix breadcrumb overflow for smaller screens (medium)
-- Add subtle background (hexagons?) (low)
+- ~~Add subtle background (hexagons?) (low)~~
 - ~~Customize buttons~~
 - ~~Increase text size for sidebar (high)~~
-
+- ~~Add flair to error page~~
+- ~~Add favicon (medium)~~
