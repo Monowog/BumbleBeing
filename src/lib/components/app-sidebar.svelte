@@ -68,6 +68,11 @@
     ],
     navSecondary: [
       {
+        title: "Résumé",
+        url: "/JacksonCmelakResume.pdf",
+        icon: "mdi:resume",
+      },
+      {
         title: "LinkedIn",
         url: "https://www.linkedin.com/in/jackson-cmelak/s",
         icon: "mdi:linkedin",
