@@ -11,6 +11,8 @@
       name: string;
       url: string;
       icon: string;
+      github: string;
+      details: string;
     }[];
   } = $props();
   const sidebar = Sidebar.useSidebar();
@@ -42,10 +44,12 @@
             side={sidebar.isMobile ? "bottom" : "right"}
             align={sidebar.isMobile ? "end" : "start"}
           >
-            <DropdownMenu.Item>
-              <Icon icon="mynaui:github" class="text-muted-foreground size-4" />
-              <span class="text-[1rem]">Github</span>
-            </DropdownMenu.Item>
+            <a href={item.github} rel="external">
+              <DropdownMenu.Item>
+                <Icon icon="mynaui:github" class="text-muted-foreground size-4" />
+                <span class="text-[1rem]">Github</span>
+              </DropdownMenu.Item>
+            </a>
             <DropdownMenu.Item>
               <Icon icon="material-symbols:folder-outline" class="text-muted-foreground size-4" />
               <span class="text-[1rem]">Details</span>
@@ -55,10 +59,12 @@
       </Sidebar.MenuItem>
     {/each}
     <Sidebar.MenuItem>
-      <Sidebar.MenuButton>
-        <Icon icon="gravity-ui:ellipsis"/>
-        <span class="text-[1.4rem] ">More</span>
-      </Sidebar.MenuButton>
+      <a href={resolve("/projects")}>
+        <Sidebar.MenuButton>
+          <Icon icon="gravity-ui:ellipsis"/>
+          <span class="text-[1.4rem]">More</span>
+        </Sidebar.MenuButton>
+      </a>
     </Sidebar.MenuItem>
   </Sidebar.Menu>
 </Sidebar.Group>

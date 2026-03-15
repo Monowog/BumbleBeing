@@ -7,7 +7,7 @@
   <p class="text-5xl text-shadow-lg text-shadow-chart-2/50">
     Error 404: Page {page.error?.message}
   </p>
-  <p class="bg-background outline-4 outline-[--button-secondary] rounded-lg border-10 border-transparent text-shadow-sm text-shadow-chart-3/30">
+  <p class="bg-honeycomb-secondary outline-4 outline-[--button-secondary] rounded-lg border-10 border-transparent text-shadow-sm text-shadow-chart-3/30">
     {BeeMovieScript.data}
   </p>
 </div>

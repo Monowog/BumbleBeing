@@ -81,18 +81,24 @@
     projects: [
       {
         name: "DNDIgor",
-        url: "#",
+        url: "/projects/dnd-igor",
         icon: "simple-icons:dungeonsanddragons",
+        github: "https://github.com/Monowog/DNDIgor",
+        details: "#",
       },
       {
         name: "Multi-Task King",
-        url: "#",
+        url: "/projects/multi-task-king",
         icon: "tabler:cards",
+        github: "https://github.com/Monowog/Multi-Task-King",
+        details: "#",
       },
       {
         name: "Magic: the Glyphening",
-        url: "#",
+        url: "/projects/magic-the-glyphening",
         icon: "streamline-ultimate:keyboard",
+        github: "https://github.com/Monowog/MagicTheGlyphening",
+        details: "#",
       },
     ],
   };

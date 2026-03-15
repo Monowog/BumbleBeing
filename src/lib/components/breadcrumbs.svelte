@@ -7,9 +7,14 @@
   );
 
   if($page.error) pathnames = ["Error"];
-  
-  const formatLabel = (str: string) => 
-    str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
+
+  const formatLabel = (str: string) => {
+    let tokens = str.split("-");
+    tokens = tokens.map(token => {
+      return token.charAt(0).toUpperCase() + token.slice(1);
+    });
+    return tokens.join(" ");
+  };
 </script>
 
 <Breadcrumb.Root class="flex-row flex-nowrap">
