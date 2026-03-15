@@ -1,7 +1,7 @@
 <script>
   import "../../routes/layout.css";
 	import Button from "./ui/button/button.svelte";
-  import JapanPic from "$lib/assets/images/JapanProfilePic.jpg";
+  import JapanPic from "$lib/assets/images/JapanPic.jpg";
   import { resolve } from "$app/paths";
   export let imageAlt = "A Humble Bumbler";
   
