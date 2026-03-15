@@ -2,10 +2,12 @@
   import { page } from '$app/stores';
   import * as Breadcrumb from "$lib/components/ui/breadcrumb";
 
-  const pathnames = $derived(
+  let pathnames = $derived(
     $page.url.pathname.split('/').filter(Boolean)
   );
 
+  if($page.error) pathnames = ["Error"];
+  
   const formatLabel = (str: string) => 
     str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
 </script>

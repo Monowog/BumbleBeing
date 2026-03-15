@@ -101,6 +101,8 @@
   border-radius: 10px;
   border-width: 2px;
   border-color: var(--button-border);
+  outline-style: dashed;
+  outline-width: 2px;
 }
 
 </style>

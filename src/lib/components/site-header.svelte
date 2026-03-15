@@ -17,7 +17,7 @@
 
   function handleBeeClicked () {
     beesActive = !beesActive;
-    $particleRef?.toggleBees();
+    $particleRef.toggleBees();
   }
 
   onMount(() => {
