@@ -12,6 +12,7 @@
   - Wrap the text in a button that links to that page
 - ~~Add proper hero segment to homepage (high)~~
 - Create custom component for showcasing projects/models (medium)
+- Add carousel for project images
 - ~~Add resume to sidebar~~
 
 #### Aesthetics
@@ -22,3 +23,4 @@
 - ~~Increase text size for sidebar (high)~~
 - ~~Add flair to error page~~
 - ~~Add favicon (medium)~~
+- Rework home page to better showcase my professional skills/information

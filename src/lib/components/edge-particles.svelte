@@ -20,7 +20,7 @@
   const popChance = 0.12;   
   const popForce = .8;
   const repelRadius = 80; 
-  const repelStrength = 0.8;
+  const repelStrength = 0.9;
   const trailColor = '128, 128, 128'; 
   const trailLength = 8;
 
@@ -43,7 +43,7 @@
       this.vy = (Math.random() - 0.5) * 2;
       this.size = Math.random() * 2 + 1;
       this.alpha = 0; 
-      this.life = Math.random() * 200 + 150; 
+      this.life = Math.random() * 250 + 150; 
     }
 
     update(w: number, h: number, mX: number, mY: number): void {
