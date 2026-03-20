@@ -31,7 +31,7 @@
     <SiteHeader />
     <div class="flex flex-1">
       <AppSidebar />
-      <main class="flex flex-1 flex-col gap-4 p-4 honeycomb">
+      <main class="flex flex-1 flex-col gap-4 p-4 inset-1.5 honeycomb">
         <EdgeParticles bind:this={$particleRef}>
           {@render children()}
         </EdgeParticles>

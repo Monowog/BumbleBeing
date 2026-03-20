@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MainHero from "$lib/components/main-hero.svelte";
+  import ProjectCard from "$lib/components/project-card.svelte";
 </script>
 
-<MainHero />
+<ProjectCard />
