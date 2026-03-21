@@ -29,9 +29,9 @@
 <div class="[--header-height:calc(--spacing(16))] overflow-hidden">
   <Sidebar.Provider class="flex flex-col">
     <SiteHeader />
-    <div class="flex flex-1">
+    <div class="flex flex-1 mt-16">
       <AppSidebar />
-      <main class="flex flex-1 flex-col gap-4 p-4 inset-1.5 honeycomb">
+      <main class="flex flex-1 flex-col gap-4 p-4 honeycomb">
         <EdgeParticles bind:this={$particleRef}>
           {@render children()}
         </EdgeParticles>

@@ -12,7 +12,7 @@
   ];
 </script>
 
-<div class="flex items-center justify-center py-16 px-4">
+<div class="flex items-center justify-center px-4">
   <section class="max-w-3xl w-full flex flex-col items-center gap-2 text-center">
 
     <span class="text-4xl border-transparent pt-6">Hi, my name's Jackson.</span>
