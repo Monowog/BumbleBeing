@@ -19,7 +19,7 @@
     <span class="text-2xl border-transparent pb-4">I'm a Software Engineer and Game Designer.</span>
 
     <div class="rounded-4xl border-4 border-amber-600 shadow-2xl overflow-hidden group">
-      <img src={JapanPic} alt={imageAlt} class="w-full max-w-5xl h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
+      <img src={JapanPic} alt={imageAlt} class="w-full max-w-2xl h-auto object-cover group-hover:scale-105 transition-transform duration-500" />
     </div>
 
 
