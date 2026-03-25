@@ -12,8 +12,8 @@
 
 </script>
 
-<div class="container">
-	<img src={centralImage} class="center-img" alt="Center" />
+<div class="container" draggable="false">
+	<img src={centralImage} class="center-img" alt="Center" draggable="false"/>
   <FlowerStem />
 
 	{#each petalImages as src, i (i)}
@@ -35,8 +35,8 @@
         centralImage = centerImage;
         }}
       >
-      <a href={resolve(urls[i])}>
-        <img {src} alt="Orbit {i}" />
+      <a href={resolve(urls[i])} draggable="false">
+        <img {src} alt="Orbit {i}" draggable="false"/>
       </a>
     </button>
 	{/each}
@@ -88,7 +88,7 @@
 		object-fit: cover;
 		border: 6px solid rgb(163, 0, 95);
 		box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    background-color: var(--color-chart-1);
+    background-color: rgb(173, 60, 126);
 	}
 
 	/* Scale up when hovered */

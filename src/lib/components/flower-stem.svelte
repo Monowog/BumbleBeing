@@ -24,7 +24,7 @@
     position: fixed;
     height: 70vh;
     width: 2vw;
-    background-image: linear-gradient(var(--color-flower-stalk), #0a5e42);
+    background-image: linear-gradient(to right, var(--color-flower-stalk), #0a5e42);
     box-shadow: 0 4px 10px rgba(0,0,0,0.6);
   }
 </style>
