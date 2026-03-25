@@ -14,7 +14,7 @@
     <Carousel.Content>
       {#each pictures as picture, i (i)}
         <Carousel.Item>
-          <Card.Root class="bg-carousel-primary rounded-4xl">
+          <Card.Root class="bg-transparent rounded-4xl">
             <Card.Content
               class="flex aspect-square items-center justify-center"
             >

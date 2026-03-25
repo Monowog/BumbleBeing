@@ -31,19 +31,21 @@
     </Button>
     <Separator orientation="vertical" class="me-2 h-4" />
     <Breadcrumbs />
-    <SearchForm class="w-full sm:ms-auto sm:w-auto" />
-    <ModeButton />
-    <Button class="size-10" variant="outline" onclick={handleBeeClicked}>
-      {#if beesActive}
-        <Icon icon="mdi:beehive-outline" 
-          class="size-6"
-        />
-      {:else}
-        <Icon icon="mdi:beehive-off-outline"
-          class="size-6 "
-        />
-      {/if}
-  <span class="sr-only">Toggle Theme</span>
-    </Button>
+    <!--<SearchForm class="w-full sm:ms-auto sm:w-auto" />-->
+    <div class="flex justify-end w-full sm:ms-auto sm:w-auto gap-4">
+      <ModeButton class="w-full sm:ms-auto sm:w-auto"/>
+      <Button class="size-10" variant="outline" onclick={handleBeeClicked}>
+        {#if beesActive}
+          <Icon icon="mdi:beehive-outline" 
+            class="size-6"
+          />
+        {:else}
+          <Icon icon="mdi:beehive-off-outline"
+            class="size-6 "
+          />
+        {/if}
+    <span class="sr-only">Toggle Theme</span>
+      </Button>
+    </div>
   </div>
 </header>
