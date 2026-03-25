@@ -1,26 +1,11 @@
 <script>
   import { innerWidth } from 'svelte/reactivity/window';
   import { resolve } from '$app/paths';
+  import FlowerStem from './flower-stem.svelte';
 
-  let centerImage = "images/ProjectsCentered.png";
+  let { centerImage, petalImages, urls } = $props();
 
-	let petalImages = [
-    "images/DNDIgorIcon.png",
-    "images/MTKIcon.png",
-    "images/MTGIcon.png",
-    "images/FurryThiel.png",
-    "images/FurryThiel.png"
-	];
-
-  const urls = [
-    "/projects/dnd-igor",
-    "/projects/multi-task-king",
-    "/projects/magic-the-glyphening",
-    "/",
-    "/"
-  ]
-
-	let centralImage = $state(centerImage);
+	let centralImage = $derived(centerImage);
 	let radius = $derived(innerWidth.current/7); 
 	
 	let hoveredIndex = $state(null);
@@ -29,9 +14,10 @@
 
 <div class="container">
 	<img src={centralImage} class="center-img" alt="Center" />
+  <FlowerStem />
 
 	{#each petalImages as src, i (i)}
-		{@const angle = (360 / petalImages.length) * i}
+		{@const angle = ((360 / petalImages.length) * i) + ((360 / petalImages.length) - 90)}
     
     <button 
       class="orbit-item"
@@ -67,19 +53,20 @@
 	}
 
 	.center-img {
-		width: 16vw;
-		height: 16vw;
-    border-width: 3px;
+		width: 18vw;
+		height: 18vw;
+    border-width: 10px;
     border-color: var(--color-chart-5);
 		border-radius: 50%;
 		z-index: 2;
-		transition: fade 0.3s ease;
+    background-color: var(--color-chart-1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 	}
 
 	.orbit-item {
 		position: absolute;
-		width: 14vw;
-		height: 14vw;
+		width: 16vw;
+		height: 16vw;
 		padding: 0;
 		border: none;
 		background: none;
@@ -90,7 +77,7 @@
 			translateX(var(--radius)) 
 			rotate(calc(-1 * var(--angle)));
 		
-		transition: transform 0.3s ease, z-index 0s;
+		transition: transform 0.3s ease, z-index 0s, opacity 0.3s ease;
 		z-index: 1;
 	}
 
@@ -99,8 +86,9 @@
 		height: 100%;
 		border-radius: 50%;
 		object-fit: cover;
-		border: 5px double rgb(163, 0, 95);
-		box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+		border: 6px solid rgb(163, 0, 95);
+		box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    background-color: var(--color-chart-1);
 	}
 
 	/* Scale up when hovered */
@@ -110,6 +98,11 @@
 			translateX(var(--radius)) 
 			rotate(calc(-1 * var(--angle))) 
 			scale(1.5);
+    opacity: 0.40;
 		z-index: 10;
 	}
+
+  .orbit-item.growing img {
+    border: 6px solid rgb(150, 107, 132);
+  }
 </style>

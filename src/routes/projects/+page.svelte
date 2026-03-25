@@ -1,20 +1,17 @@
-<script>
+<script lang="ts">
+  import Repeller from '$lib/components/repeller.svelte';
   import Flower from '$lib/components/project-flower.svelte';
 
-  const imageUrls = [
-    'https://picsum.photos/80?1',
-    'https://picsum.photos/80?2',
-    'https://picsum.photos/80?3',
-    'https://picsum.photos/80?4',
-    'https://picsum.photos/80?5'
-  ];
 </script>
-
-{#snippet centerImage()}
-  <img src="https://picsum.photos/100?center" alt="center" />
-{/snippet}
-
-<Flower 
-  images={imageUrls} 
-  {centerImage} 
-/>
+<Repeller>
+  <Flower centerImage="images/ProjectsCentered.png" petalImages={[
+      "images/DNDIgorIcon.png",
+      "images/MTKIcon.png",
+      "images/MTGIcon.png"
+    ]} 
+    urls={[
+      "/projects/dnd-igor",
+      "/projects/multi-task-king",
+      "/projects/magic-the-glyphening",
+    ]}/>
+</Repeller>

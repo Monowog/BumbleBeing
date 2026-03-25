@@ -25,7 +25,7 @@
       },
       {
         title: "ML Models",
-        url: "#",
+        url: "/models",
         icon: "mingcute:robot-line",
         items: [
           {
