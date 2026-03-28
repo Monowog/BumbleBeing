@@ -44,6 +44,7 @@
   --flower-stalk: oklch(67.163% 0.17609 152.172);
   --carousel-primary: rgb(253, 197, 123);
   --carousel-secondary: oklch(0.7857 0.1716 68.5720);
+  --highlight: rgb(253, 197, 123);
   --font-sans: "Galdeano", ui-sans-serif, sans-serif, system-ui;
   --font-serif: Source Serif 4, serif;
   --font-mono: JetBrains Mono, monospace;
@@ -106,7 +107,8 @@
   --honeycomb-secondary: oklch(18.81% 0.05675 41.995);
   --flower-stalk: oklch(33.951% 0.08455 154.644);
   --carousel-primary: oklch(24.837% 0.07486 42.044);
-  --carousel-secondary: oklch(0.7857 0.1716 68.5720);
+  --carousel-secondary: oklch(42.973% 0.09181 72.345);
+  --highlight: oklch(46.999% 0.09927 25.601);
   --font-sans: "Galdeano", ui-sans-serif, sans-serif, system-ui;
   --font-serif: Source Serif 4, serif;
   --font-mono: JetBrains Mono, monospace;
@@ -165,6 +167,7 @@
   --color-flower-stalk: var(--flower-stalk);
   --color-carousel-primary: var(--carousel-primary);
   --color-carousel-secondary: var(--carousel-secondary);
+  --color-highlight: var(--highlight);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

@@ -33,7 +33,7 @@
     <Breadcrumbs />
     <!--<SearchForm class="w-full sm:ms-auto sm:w-auto" />-->
     <div class="flex justify-end w-full sm:ms-auto sm:w-auto gap-4">
-      <ModeButton class="w-full sm:ms-auto sm:w-auto"/>
+      <ModeButton/>
       <Button class="size-10" variant="outline" onclick={handleBeeClicked}>
         {#if beesActive}
           <Icon icon="mdi:beehive-outline" 
