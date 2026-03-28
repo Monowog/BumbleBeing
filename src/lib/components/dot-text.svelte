@@ -6,29 +6,29 @@
     dotColor = "#DAA520", 
     dotSize = 2.5, 
     spacing = 7,
-    mouseRadius = 60,
-    force = 0.1 
+    mouseRadius = 80,
+    force = 0.2 
   } = $props();
 
-  const textWidth = 800;
-  const textHeight = 200;
+  const textWidth = 1000;
+  const textHeight = 150;
 
   let canvas = $state();
   let ctx;
   let particles = [];
   let mouse = { x: -1000, y: -1000 };
-  let wanderForce = 0.5;
+  let wanderForce = 1.2;
   let wanderRate = 0.01;
 
   class Particle {
     constructor(x, y) {
-      this.x = textWidth/2 + (Math.random() - 0.5) * 100;
+      this.x = textWidth/2 + (Math.random() - 0.5) * 200;
       this.y = textHeight/2 + (Math.random() - 0.5) * 100;
       this.baseX = x;
       this.baseY = y;
       this.vx = 0;
       this.vy = 0;
-      this.friction = 0.97;
+      this.friction = 0.86;
       this.ease = 0.01;
     }
 
