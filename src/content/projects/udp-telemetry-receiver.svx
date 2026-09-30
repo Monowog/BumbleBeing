@@ -1,10 +1,59 @@
 ---
 title: UDP Telemetry Receiver
-blurb: A C++17 service that parses a custom binary UDP packet format, validates checksums, and flags dropped or out-of-order frames.
+blurb: A C++17 receiver for a custom 28-byte binary telemetry format, with hand-rolled CRC-32 and explicit byte-order handling.
 tags: [systems]
-tools: [C++17, UDP, CMake]
+tools: [C++17, CMake, BSD sockets]
 date: 2026-09-30
+repo: https://github.com/Monowog/udp-telemetry-receiver
 ---
 
-<!-- TODO: written by hand — the repository is private and is not read.
-     Source material: PrimaryVault/Telemetry Project/ phase notes. -->
+A sender and a receiver that speak a binary protocol I designed, carrying simulated
+GPS and IMU readings over UDP. It exists to be the opposite of a project built on a
+framework: every byte on the wire is placed deliberately, and everything that would
+normally be a library call is written out.
+
+## The wire format
+
+Twenty-eight bytes, fixed layout:
+
+| Field | Bytes | Purpose |
+| --- | --- | --- |
+| `magic` | 2 | Identifies the protocol; anything else is discarded |
+| `version` | 1 | Format version |
+| `sensor_type` | 1 | GPS or IMU |
+| `sequence_number` | 4 | Monotonic, so order and gaps are recoverable |
+| `timestamp` | 4 | Milliseconds since the sender started |
+| `values[3]` | 12 | Three float readings |
+| `checksum` | 4 | CRC-32 over the preceding 24 bytes |
+
+## The parts worth writing by hand
+
+**CRC-32** is generated rather than linked: a 256-entry lookup table built from the
+reflected polynomial `0xEDB88320` on first use, then a byte-at-a-time update over
+the payload. Roughly thirty lines, and the reason to write them is that a checksum
+you implemented is a checksum you can reason about when a packet fails validation.
+
+**Byte order is explicit everywhere.** Every multi-byte field goes through
+`htons`/`htonl` on the way out and `ntohs`/`ntohl` on the way in, so the format is
+big-endian on the wire regardless of the machine at either end. Floats are the
+interesting case: they are copied into a `uint32_t` with `memcpy`, byte-swapped, and
+copied back — never reinterpreted through a pointer cast or a union, both of which
+are the usual way to introduce undefined behaviour into a working parser.
+
+**Parsing returns `std::optional<Packet>`,** and a packet earns its way out of that
+optional by passing three separate gates: the datagram is exactly 28 bytes, the
+magic number matches, and the recomputed CRC agrees with the one carried in the
+packet. Anything else is reported and dropped — a receiver on an open socket should
+treat every datagram as hostile until it has proved otherwise.
+
+The build is CMake with the parsing and checksum code in a static library shared by
+both the sender and receiver executables, so the protocol implementation is compiled
+once and cannot drift between the two ends.
+
+## Where it is
+
+The format carries `sequence_number` and the receiver parses and reports it, but
+gap and reorder detection is not implemented yet — that is the next piece, along
+with a proper test suite for the codec.
+
+<!-- TODO: why you built this -->
