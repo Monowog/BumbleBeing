@@ -44,12 +44,13 @@
 	--brown-900: oklch(0.2591 0.0967 28.8181);
 	--cream: oklch(0.9219 0 0);
 
-	/* Neutrals. Cool on purpose only in the sense that v1 was: see the note in
-	 * Layer 2 on --border and --ink-muted. */
-	--grey-200: oklch(0.9271 0.0075 260.7315);
-	--grey-500: oklch(0.5471 0.0321 263.2921);
-	--grey-400: oklch(0.7155 0 0);
-	--grey-600: oklch(0.5032 0 0);
+	/* Warm neutrals. v1's equivalents were slightly *blue* (hue ~261) and read
+	 * grey-blue next to the beige; these keep v1's lightness and move the hue
+	 * into the honey family so borders and muted text belong to the palette. */
+	--warm-200: oklch(0.9271 0.009 80);
+	--warm-400: oklch(0.7155 0.014 80);
+	--warm-500: oklch(0.5471 0.028 68);
+	--warm-600: oklch(0.5032 0.022 60);
 
 	/* Tag chips — one pair per Tag, four Tags, both themes. `game` has no
 	 * Projects yet and still gets its pair, so Multi-Task King needs no
@@ -84,12 +85,8 @@
 	--surface-raised: var(--paper);
 
 	--ink: var(--brown-900);
-	/* Carried from v1's --muted-foreground and --border, both of which are
-	 * slightly *cool* in an otherwise warm palette. Kept because the palette
-	 * decision was "v1's values exactly"; flagged as the first thing to warm up
-	 * if the beige-ground experiment happens. */
-	--ink-muted: var(--grey-500);
-	--border: var(--grey-200);
+	--ink-muted: var(--warm-500);
+	--border: var(--warm-200);
 
 	--primary: var(--honey-500);
 	--primary-ink: var(--brown-900);
@@ -123,8 +120,8 @@
 	--surface-raised: var(--umber-600);
 
 	--ink: var(--cream);
-	--ink-muted: var(--grey-400);
-	--border: var(--grey-600);
+	--ink-muted: var(--warm-400);
+	--border: var(--warm-600);
 
 	--primary: var(--honey-400);
 	--primary-hover: var(--honey-300);
