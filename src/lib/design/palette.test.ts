@@ -27,7 +27,14 @@ describe.each([
 	['dark chip: web', '--chip-web-ink-dark', '--chip-web-bg-dark'],
 	['dark chip: ml', '--chip-ml-ink-dark', '--chip-ml-bg-dark'],
 	['dark chip: systems', '--chip-systems-ink-dark', '--chip-systems-bg-dark'],
-	['dark chip: game', '--chip-game-ink-dark', '--chip-game-bg-dark']
+	['dark chip: game', '--chip-game-ink-dark', '--chip-game-bg-dark'],
+	// Prose colours. These regressed once already: the typography plugin colours
+	// headings, inline code, links and table headers through its own variables,
+	// which default near-black and vanished in dark mode.
+	['prose link', '--honey-700', '--paper'],
+	['prose inline code', '--brown-900', '--beige-100'],
+	['dark prose link', '--honey-300', '--umber-900'],
+	['dark prose inline code', '--cream', '--umber-800']
 ])('%s', (_label, foreground, background) => {
 	it(`meets WCAG AA (${AA}:1)`, () => {
 		expect(contrastRatio(token(foreground), token(background))).toBeGreaterThanOrEqual(AA);

@@ -25,7 +25,7 @@
 		!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 	const DOT_COUNT = 8;
-	const ORBIT_PADDING = 8;
+	const ORBIT_PADDING = 4;
 	const BUZZ_COLOUR = '218, 165, 32';
 
 	interface Dot {
