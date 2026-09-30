@@ -20,8 +20,6 @@ export default defineConfig({
 	],
 	test: {
 		expect: { requireAssertions: true },
-		// Removed in Phase 2, when loadCollection() and the Zod schemas get real tests.
-		passWithNoTests: true,
 		projects: [
 			{
 				extends: './vite.config.ts',
