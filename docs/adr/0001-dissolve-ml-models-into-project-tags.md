@@ -26,7 +26,7 @@ split survives in the UI without earning a separate model.
 Tags become the axis of classification, so they scale to `game`, `systems`, `web`
 without new routes — adding a Project is one file and no route work.
 
-`/models` and `/models/*` 404 in v2. Those child URLs were *already* 404ing in
+`/models` and `/models/*` 404 in v2. Those child URLs were _already_ 404ing in
 production (v1's flower linked to `/models/fracture-detector` and two siblings,
 none of which existed), and per the rebuild's no-redirect decision no rewrite is
 added. This is the part that is hard to reverse: `/projects/garbage-classifier` is

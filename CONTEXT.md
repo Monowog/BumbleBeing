@@ -93,5 +93,5 @@ Belongs to the header alone and is unrelated to the Bees.
 _Avoid_: Particles, dots, hover effect, sparkle, jitter
 
 **Čmelák**:
-Czech for bumblebee (*tschmeh-lahk*), and the site's namesake.
+Czech for bumblebee (_tschmeh-lahk_), and the site's namesake.
 _Avoid_: Bumblebee (when referring to the name itself)
