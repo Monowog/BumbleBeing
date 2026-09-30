@@ -88,9 +88,12 @@
 	--ink-muted: var(--warm-500);
 	--border: var(--warm-200);
 
-	--primary: var(--honey-500);
+	/* Muted 10% toward the background so the amber sits in the palette rather than
+	 * shouting over it. Expressed as a mix rather than baked values so it keeps
+	 * following --background if the ground ever changes. */
+	--primary: color-mix(in oklab, var(--honey-500) 90%, var(--background));
 	--primary-ink: var(--brown-900);
-	--primary-hover: var(--honey-600);
+	--primary-hover: color-mix(in oklab, var(--honey-600) 90%, var(--background));
 	--ring: var(--honey-500);
 
 	--honeycomb-ground: var(--paper);
@@ -123,8 +126,8 @@
 	--ink-muted: var(--warm-400);
 	--border: var(--warm-600);
 
-	--primary: var(--honey-400);
-	--primary-hover: var(--honey-300);
+	--primary: color-mix(in oklab, var(--honey-400) 90%, var(--background));
+	--primary-hover: color-mix(in oklab, var(--honey-300) 90%, var(--background));
 	--ring: var(--honey-400);
 
 	/* Inverted: cells read lighter than the ground in the dark. */

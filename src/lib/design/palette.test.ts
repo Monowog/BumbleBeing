@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { contrastRatio, lightnessDelta, readOklchTokens } from './contrast';
+import { contrastRatio, lightnessDelta, mixOklch, readOklchTokens } from './contrast';
 
 const tokens = readOklchTokens(readFileSync('src/app.css', 'utf8'));
 const token = (name: string) => {
@@ -15,7 +15,7 @@ describe.each([
 	['body text on background', '--brown-900', '--paper'],
 	['body text on surface', '--brown-900', '--beige-100'],
 	['muted text on background', '--warm-500', '--paper'],
-	['text on primary', '--brown-900', '--honey-500'],
+
 	['chip: web', '--chip-web-ink', '--chip-web-bg'],
 	['chip: ml', '--chip-ml-ink', '--chip-ml-bg'],
 	['chip: systems', '--chip-systems-ink', '--chip-systems-bg'],
@@ -23,7 +23,7 @@ describe.each([
 	['dark body text on background', '--cream', '--umber-900'],
 	['dark body text on surface', '--cream', '--umber-800'],
 	['dark muted text on background', '--warm-400', '--umber-900'],
-	['dark text on primary', '--brown-900', '--honey-400'],
+
 	['dark chip: web', '--chip-web-ink-dark', '--chip-web-bg-dark'],
 	['dark chip: ml', '--chip-ml-ink-dark', '--chip-ml-bg-dark'],
 	['dark chip: systems', '--chip-systems-ink-dark', '--chip-systems-bg-dark'],
@@ -43,5 +43,19 @@ describe('honeycomb texture', () => {
 		const delta = lightnessDelta(token(ground), token(cell));
 		expect(delta).toBeGreaterThanOrEqual(4);
 		expect(delta).toBeLessThanOrEqual(5);
+	});
+});
+
+// --primary and --primary-hover are muted 10% toward the background, so the colour
+// a reader actually sees behind button text is a mix, not a ramp entry.
+describe('muted primaries', () => {
+	it.each([
+		['light primary', '--honey-500', '--paper'],
+		['light primary hover', '--honey-600', '--paper'],
+		['dark primary', '--honey-400', '--umber-900'],
+		['dark primary hover', '--honey-300', '--umber-900']
+	])('%s keeps AA for button text', (_label, ramp, ground) => {
+		const muted = mixOklch(token(ramp), token(ground), 0.9);
+		expect(contrastRatio(token('--brown-900'), muted)).toBeGreaterThanOrEqual(AA);
 	});
 });
