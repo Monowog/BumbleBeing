@@ -1,12 +1,34 @@
 ---
 title: Bone Fracture Detector
-blurb: A ResNet classifier that flags fractures in radiographs, built against a published imaging baseline.
+blurb: A ResNet transfer-learning classifier for fractures in X-rays, measured against a hand-built baseline.
 tags: [ml]
-tools: [Python, PyTorch, Jupyter]
+tools: [Python, PyTorch, scikit-learn, Jupyter]
 date: 2025-12-07
 repo: https://github.com/Monowog/ResNet-Fracture-Classifier
 ---
 
-<!-- TODO: why you built this -->
+A binary classifier that looks at a radiograph and decides whether a bone in it is
+fractured. The interesting part is not the final model but the gap between it and
+the baseline, which is the only way to know whether the sophistication paid for
+itself.
 
-<!-- TODO: drafted from the repo in Phase 7 -->
+## Two models, deliberately
+
+The **baseline** does it the honest, old-fashioned way: load the images, preprocess
+them, extract features by hand, and train a support vector machine. It reached
+**58.6% accuracy** with an ROC AUC of **0.623** — better than a coin flip, and not
+by enough to be worth anything clinically.
+
+The **ResNet model** replaces the hand-built features with transfer learning from a
+pre-trained network, fine-tuned on the fracture dataset. On the same 338-image test
+set it reached **83.4% accuracy**, ROC AUC **0.834**.
+
+That is a 25-point swing, and it is the result the project exists to produce.
+Building the weak model first is what makes the strong one legible: without the
+baseline, 83% is a number with nothing to compare it to.
+
+Work was benchmarked against a published baseline from the imaging literature
+([Int. J. Imaging Syst. Technol.](https://doi.org/10.1002/ima.22849)), so the target
+was somebody else's reported result rather than a number I picked myself.
+
+<!-- TODO: why you built this -->

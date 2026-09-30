@@ -4,7 +4,7 @@
 
 	// Physics carried over from v1's edge-particles.svelte, unchanged.
 	const MAX_PARTICLES = 300;
-	const SPAWN_RATE = 0.23;
+	const SPAWN_RATE = 0.13; //changed from 0.23
 	const SPRING = 0.001;
 	const FRICTION = 0.98;
 	const INSET = 10;
@@ -12,7 +12,7 @@
 	const POP_FORCE = 0.8;
 	const DRIFT = 0.04;
 	const REPEL_RADIUS = 80;
-	const REPEL_STRENGTH = 0.9;
+	const REPEL_STRENGTH = 0.7; //changed from 0.9
 	const TRAIL_LENGTH = 8;
 	const BEE_COLOUR = '218, 165, 32';
 	const TRAIL_COLOUR = '128, 128, 128';

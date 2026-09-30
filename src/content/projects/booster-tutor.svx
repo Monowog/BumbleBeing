@@ -1,12 +1,52 @@
 ---
 title: BoosterTutor
-blurb: A web app that helps Magic players draft and build better limited decks, with LLM feedback on every pick.
+blurb: An LLM coach for Magic drafting, where Python computes every verdict and the model only explains it.
 tags: [web]
-tools: [Python, LLMs, 17lands]
+tools: [Python, FastAPI, PostgreSQL, SvelteKit, TypeScript]
 date: 2026-09-22
 repo: https://github.com/Monowog/BoosterTutor
 ---
 
-<!-- TODO: why you built this -->
+BoosterTutor is a coach for Magic: the Gathering Limited. You give it a draft or a
+sealed pool, and it tells you which picks cost you equity and why — not as a
+scoreboard, but as a paragraph you could hear from a person sitting next to you.
 
-<!-- TODO: drafted from the repo in Phase 7 -->
+The architecture rests on one rule, written into the project's `CONTEXT.md` on the
+first day: **Python computes every fact and every verdict; the LLM only explains
+them in prose.** That constraint is the whole design. A language model asked to
+grade a pick will produce a confident number it cannot justify; a language model
+handed a number and asked to explain it stays useful and stays honest.
+
+## Grading a pick
+
+Every card gets a *fitness* — its value to a specific pool at a specific moment,
+measured in percentage points of win rate, using [17lands](https://www.17lands.com)
+data as the underlying signal. Because every term lands on one interpretable scale,
+"this card was worth 2pp less to your deck" is a sentence a coach can actually say.
+
+Picks are then graded on the **gap** to the best card in the pack, not on rank.
+Most picks are close, and flagging every non-optimal one would bury the three that
+mattered under thirty that did not. The bands are fixed: `solid` within 2pp,
+`questionable` within 4pp, `mistake` beyond. A pack where nothing was at stake —
+one playable, nothing scorable, or every card already `solid` — is `indifferent`
+rather than graded, because no available choice cost anything.
+
+Most of the difficulty lives in deciding what a pool is *trying* to become. Ten
+two-colour archetypes are scored as competing hypotheses, each with a float
+describing what share of the pool it could play, and a card's value depends on the
+commitment it asks for as much as on its raw strength.
+
+## Building it
+
+The API is FastAPI and SQLAlchemy over Postgres, with Alembic migrations, `uv` for
+packaging, and mypy, ruff and pytest in the loop. The web client is SvelteKit and
+Tailwind, tested with Vitest in a real browser through Playwright.
+
+The part worth pointing at is not the stack, though — it is `docs/decisions/`.
+Sixteen ADRs record how the scoring evolved: the fitness function itself, the
+synergy term, the decay coefficient, and one full rewrite of the classification
+system after the original conflated two questions ("what did this pick cost?" and
+"is this card any good?") into a single label and produced results that read as
+noise.
+
+<!-- TODO: why you built this -->

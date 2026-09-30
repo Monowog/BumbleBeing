@@ -2,7 +2,7 @@
 title: Garbage Classifier
 blurb: Three models compared — SVM, random forest and a CNN — sorting photos of waste into six material classes.
 tags: [ml]
-tools: [Python, scikit-learn, TensorFlow, Streamlit]
+tools: [Python, TensorFlow, scikit-learn, Streamlit]
 date: 2023-12-07
 repo: https://github.com/Monowog/ecs171-project
 demo: https://ecs171-group27-project.streamlit.app/
@@ -10,6 +10,34 @@ report: /GarbageClassificationReport.pdf
 credit: Team project — UC Davis ECS 171
 ---
 
-<!-- TODO: why you built this, and what you personally built -->
+Given a photograph of a piece of rubbish, sort it into one of six materials:
+cardboard, glass, metal, paper, plastic, or trash. The dataset is the Kaggle
+garbage classification set; the question was how far classical methods get before a
+convolutional network earns its cost.
 
-<!-- TODO: drafted from the repo in Phase 7 -->
+## Three models on the same problem
+
+| Model | Test accuracy |
+| --- | --- |
+| Support vector machine | 54% |
+| Random forest | 56% |
+| Convolutional network | **74%** |
+
+The two classical models land within a couple of points of each other, which is its
+own result: the random forest's extra flexibility bought almost nothing, because the
+limiting factor was the features, not the classifier. The CNN, learning its own
+features, gained eighteen points over the better of them.
+
+## Where it fails is the interesting part
+
+The per-class numbers say more than the headline. Paper is nearly solved — 0.97
+recall — while **glass is the hardest class at 0.50 recall**, and most of what it
+loses goes to metal, which correspondingly has the worst precision at 0.56. The
+confusion is not random: photographed under the same lighting, a crushed glass
+fragment and a crumpled can share their strongest visual cues, and a model working
+from a few hundred training images per class has little to separate them.
+
+The repository also holds the exploratory analysis and a Streamlit app that runs the
+trained CNN on an uploaded photo.
+
+<!-- TODO: why you built this, and what you personally built -->
