@@ -1,0 +1,15 @@
+---
+title: Garbage Classifier
+blurb: Three models compared — SVM, random forest and a CNN — sorting photos of waste into six material classes.
+tags: [ml]
+tools: [Python, scikit-learn, TensorFlow, Streamlit]
+date: 2023-12-07
+repo: https://github.com/Monowog/ecs171-project
+demo: https://ecs171-group27-project.streamlit.app/
+report: /GarbageClassificationReport.pdf
+credit: Team project — UC Davis ECS 171
+---
+
+<!-- TODO: why you built this, and what you personally built -->
+
+<!-- TODO: drafted from the repo in Phase 7 -->

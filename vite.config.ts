@@ -14,6 +14,13 @@ export default defineConfig({
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
 			adapter: adapter(),
+			prerender: {
+				// An empty collection is a legitimate state, not a broken route: until
+				// the first Post exists, /blog/[slug] has no entries to crawl and the
+				// default 'fail' aborts the build. entries() enumerates exactly what
+				// exists in each collection, so "unseen" here means "empty", not "wrong".
+				handleUnseenRoutes: 'warn'
+			},
 			preprocess: [mdsvex({ extensions: ['.svx'] })],
 			extensions: ['.svelte', '.svx']
 		})

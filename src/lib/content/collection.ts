@@ -3,6 +3,8 @@ import type { ZodType } from 'zod';
 /** What `import.meta.glob('*.svx', { eager: true })` hands back per file. */
 export interface ContentModule {
 	metadata?: unknown;
+	/** The compiled Svelte component for the Markdown body. */
+	default?: unknown;
 }
 
 /** Filename (not path) to slug: `src/content/projects/booster-tutor.svx` -> `booster-tutor`. */
@@ -46,4 +48,13 @@ export function loadCollection<T>(
 /** Newest first. Posts are always read this way; Projects use it as their default. */
 export function byDateDescending<T extends { date: string }>(entries: T[]): T[] {
 	return [...entries].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/** Slug -> compiled body component, for rendering a single entry's prose. */
+export function componentsBySlug(modules: Record<string, ContentModule>): Record<string, unknown> {
+	const map: Record<string, unknown> = {};
+	for (const [path, module] of Object.entries(modules)) {
+		map[slugFromPath(path)] = module.default;
+	}
+	return map;
 }

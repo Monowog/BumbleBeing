@@ -1,4 +1,10 @@
-import { loadCollection, byDateDescending, type ContentModule } from './collection';
+import type { Component } from 'svelte';
+import {
+	byDateDescending,
+	componentsBySlug,
+	loadCollection,
+	type ContentModule
+} from './collection';
 import { projectSchema, postSchema, type Project, type Post } from './schema';
 
 // Eager and relative so the glob is resolved at build time: every page that needs
@@ -11,12 +17,24 @@ const postModules = import.meta.glob<ContentModule>('../../content/posts/*.svx',
 export const projects: Project[] = byDateDescending(loadCollection(projectModules, projectSchema));
 export const posts: Post[] = byDateDescending(loadCollection(postModules, postSchema));
 
+const projectBodies = componentsBySlug(projectModules);
+const postBodies = componentsBySlug(postModules);
+
 export function projectBySlug(slug: string): Project | undefined {
 	return projects.find((project) => project.slug === slug);
 }
 
 export function postBySlug(slug: string): Post | undefined {
 	return posts.find((post) => post.slug === slug);
+}
+
+/** The compiled Markdown body for a Project, or undefined if the slug is unknown. */
+export function projectBody(slug: string): Component | undefined {
+	return projectBodies[slug] as Component | undefined;
+}
+
+export function postBody(slug: string): Component | undefined {
+	return postBodies[slug] as Component | undefined;
 }
 
 export type { Project, Post };

@@ -1,0 +1,10 @@
+---
+title: UDP Telemetry Receiver
+blurb: A C++17 service that parses a custom binary UDP packet format, validates checksums, and flags dropped or out-of-order frames.
+tags: [systems]
+tools: [C++17, UDP, CMake]
+date: 2026-09-30
+---
+
+<!-- TODO: written by hand — the repository is private and is not read.
+     Source material: PrimaryVault/Telemetry Project/ phase notes. -->

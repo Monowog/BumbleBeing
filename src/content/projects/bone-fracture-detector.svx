@@ -1,0 +1,12 @@
+---
+title: Bone Fracture Detector
+blurb: A ResNet classifier that flags fractures in radiographs, built against a published imaging baseline.
+tags: [ml]
+tools: [Python, PyTorch, Jupyter]
+date: 2025-12-07
+repo: https://github.com/Monowog/ResNet-Fracture-Classifier
+---
+
+<!-- TODO: why you built this -->
+
+<!-- TODO: drafted from the repo in Phase 7 -->

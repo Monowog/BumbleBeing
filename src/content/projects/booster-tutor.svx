@@ -1,0 +1,12 @@
+---
+title: BoosterTutor
+blurb: A web app that helps Magic players draft and build better limited decks, with LLM feedback on every pick.
+tags: [web]
+tools: [Python, LLMs, 17lands]
+date: 2026-09-22
+repo: https://github.com/Monowog/BoosterTutor
+---
+
+<!-- TODO: why you built this -->
+
+<!-- TODO: drafted from the repo in Phase 7 -->
