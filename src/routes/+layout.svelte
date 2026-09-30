@@ -1,12 +1,15 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { Footer, Header } from '$lib/components';
+	import { BeeLayer, Footer, Header, HoneycombLayer } from '$lib/components';
 
 	let { children } = $props();
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
+
+<HoneycombLayer />
+<BeeLayer />
 
 <div class="flex min-h-screen flex-col">
 	<Header />

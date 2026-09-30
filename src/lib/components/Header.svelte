@@ -6,6 +6,7 @@
 	import { theme } from '$lib/state/theme.svelte';
 	import { bees } from '$lib/state/bees.svelte';
 	import { cn } from '$lib/utils';
+	import BuzzLayer from './BuzzLayer.svelte';
 
 	let open = $state(false);
 	let trigger = $state<HTMLButtonElement | null>(null);
@@ -34,8 +35,9 @@
 
 <svelte:window onkeydown={onKeydown} />
 
-<header class="sticky top-0 z-40 border-b border-border bg-surface">
-	<div class="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4">
+<header class="relative sticky top-0 z-40 border-b border-border bg-surface">
+	<BuzzLayer />
+	<div class="relative z-10 mx-auto flex h-16 max-w-5xl items-center gap-2 px-4">
 		<a href={resolve('/')} class="mr-auto font-display text-xl font-bold no-underline sm:text-2xl">
 			BumbleBeing
 		</a>
@@ -44,6 +46,7 @@
 		<nav aria-label="Main" class="hidden md:flex md:items-center md:gap-1">
 			{#each NAV_LINKS as link (link.href)}
 				<a
+					data-buzz
 					href={resolve(link.href)}
 					class={linkClasses(link.href)}
 					aria-current={isActive(page.url.pathname, link.href) ? 'page' : undefined}
@@ -54,6 +57,7 @@
 		</nav>
 
 		<button
+			data-buzz
 			type="button"
 			onclick={() => theme.toggle()}
 			aria-pressed={theme.isDark}
@@ -82,6 +86,7 @@
 		</button>
 
 		<button
+			data-buzz
 			type="button"
 			onclick={() => bees.toggle()}
 			aria-pressed={bees.active}
@@ -109,6 +114,7 @@
 			no inert background. Four links do not warrant one (ADR 0002).
 		-->
 		<button
+			data-buzz
 			bind:this={trigger}
 			type="button"
 			onclick={() => (open = !open)}

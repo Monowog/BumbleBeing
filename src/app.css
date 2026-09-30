@@ -36,7 +36,7 @@
 	 * new: the dark honeycomb cell, 4.6% *above* --umber-900 so cells read
 	 * lighter than the ground. */
 	--umber-600: oklch(0.36963 0.1022 47.009);
-	--umber-750: oklch(0.202 0.0585 42);
+	--umber-750: oklch(0.202 0.034 62);
 	--umber-800: oklch(0.1881 0.05675 41.995);
 	--umber-900: oklch(0.15614 0.03452 66.914);
 
@@ -202,4 +202,25 @@
 		outline: 2px solid var(--ring);
 		outline-offset: 2px;
 	}
+}
+
+/* ---------------------------------------------------------------------------
+ * The honeycomb tiling, in one place.
+ *
+ * Set --s (cell size), --c1 (ground) and --c2 (cell) on the element. Used by the
+ * fixed background layer, the placeholder tiles and the error page's mark.
+ * ------------------------------------------------------------------------- */
+@utility honeycomb {
+	--c: #0000, var(--c1) 0.5deg 119.5deg, #0000 120deg;
+	--g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+	--g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+	--g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+	background:
+		var(--g1),
+		var(--g1) var(--s) calc(1.73 * var(--s)),
+		var(--g2),
+		var(--g2) var(--s) calc(1.73 * var(--s)),
+		var(--g3) var(--s) 0,
+		var(--g3) 0 calc(1.73 * var(--s)) var(--c2);
+	background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
 }

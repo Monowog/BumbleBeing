@@ -18,6 +18,19 @@ function storedPreference(): boolean | null {
 }
 
 /**
+ * Whether the Bees should fly, given the two inputs that decide it.
+ *
+ * Reduced motion wins over a stored preference: someone who asked their OS for
+ * less movement should not have to ask this site separately, even if they once
+ * switched the Bees on here. Extracted so the rule is unit-testable — the rest of
+ * this module is unavoidably browser-bound.
+ */
+export function resolveBeePreference(reducedMotion: boolean, stored: boolean | null): boolean {
+	if (reducedMotion) return false;
+	return stored ?? true;
+}
+
+/**
  * Whether the Bees are flying. Phase 5 wires the canvas to this; the header
  * button reads and writes it from Phase 4.
  *
@@ -29,9 +42,7 @@ class BeeState {
 
 	constructor() {
 		if (!browser) return;
-		// Reduced motion wins over a stored preference: someone who asked the OS for
-		// less movement should not have to ask this site separately.
-		this.active = prefersReducedMotion() ? false : (storedPreference() ?? true);
+		this.active = resolveBeePreference(prefersReducedMotion(), storedPreference());
 	}
 
 	set(active: boolean) {
