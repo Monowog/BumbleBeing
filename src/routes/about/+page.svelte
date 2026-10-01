@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SOCIAL_LINKS } from '$lib/nav';
-	import { Separator } from '$lib/components';
+	import { Separator, Seo } from '$lib/components';
 
 	// One page with three anchored sections rather than v1's three routes, all of
 	// which were <span>Hello</span>.
@@ -10,6 +10,11 @@
 		{ id: 'hobbies', title: 'Hobbies' }
 	];
 </script>
+
+<Seo
+	title="About"
+	description="Jackson Cmelak: education, experience, and what he does when not writing software."
+/>
 
 <div class="flex flex-col gap-10">
 	<header class="flex flex-col gap-3">

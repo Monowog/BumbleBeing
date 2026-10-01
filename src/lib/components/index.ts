@@ -8,4 +8,5 @@ export { default as HoneycombLayer } from './HoneycombLayer.svelte';
 export { default as ImageStrip } from './ImageStrip.svelte';
 export { default as PlaceholderTile } from './PlaceholderTile.svelte';
 export { default as ProjectCard } from './ProjectCard.svelte';
+export { default as Seo } from './Seo.svelte';
 export { default as Separator } from './Separator.svelte';

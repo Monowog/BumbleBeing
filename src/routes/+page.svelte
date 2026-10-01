@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { projects } from '$lib/content';
-	import { Button, ProjectCard } from '$lib/components';
+	import { Button, ProjectCard, Seo } from '$lib/components';
 
 	// The home strip shows the three most recent; /projects shows everything.
 	const featured = $derived(projects.slice(0, 3));
 </script>
+
+<Seo />
 
 <div class="flex flex-col gap-12">
 	<section class="flex flex-col items-start gap-4 py-8">

@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { projects } from '$lib/content';
-	import { ProjectCard } from '$lib/components';
+	import { ProjectCard, Seo } from '$lib/components';
 </script>
+
+<Seo
+	title="Projects"
+	description="Machine learning, systems software and web applications Jackson Cmelak has built and written up."
+/>
 
 <div class="flex flex-col gap-8">
 	<header class="flex flex-col gap-2">

@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { posts } from '$lib/content';
-	import { Card, Chip } from '$lib/components';
+	import { Card, Chip, Seo } from '$lib/components';
 </script>
+
+<Seo title="Beelog" description="Notes on what Jackson Cmelak is building, and why." />
 
 <div class="flex flex-col gap-8">
 	<header class="flex flex-col gap-2">

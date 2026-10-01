@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { Chip } from '$lib/components';
+	import { Chip, Seo } from '$lib/components';
 
 	let { data } = $props();
 	const post = $derived(data.post);
 	const Body = $derived(data.body);
 </script>
+
+<Seo title={post.title} description={post.blurb} type="article" publishedAt={post.date} />
 
 <article class="flex flex-col gap-6">
 	<header class="flex flex-col gap-3">

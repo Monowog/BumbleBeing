@@ -1,10 +1,12 @@
 <script lang="ts">
-	import { Button, Chip, ImageStrip } from '$lib/components';
+	import { Button, Chip, ImageStrip, Seo } from '$lib/components';
 
 	let { data } = $props();
 	const project = $derived(data.project);
 	const Body = $derived(data.body);
 </script>
+
+<Seo title={project.title} description={project.blurb} type="article" publishedAt={project.date} />
 
 <article class="flex flex-col gap-6">
 	<header class="flex flex-col gap-3">
