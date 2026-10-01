@@ -7,6 +7,7 @@
 	import { bees } from '$lib/state/bees.svelte';
 	import { cn } from '$lib/utils';
 	import BuzzLayer from './BuzzLayer.svelte';
+	import Beehive from './icons/Beehive.svelte';
 
 	let open = $state(false);
 	let trigger = $state<HTMLButtonElement | null>(null);
@@ -93,20 +94,7 @@
 			class="inline-flex size-10 items-center justify-center rounded-md hover:bg-primary hover:text-primary-ink"
 		>
 			<span class="sr-only">Flying bees</span>
-			<svg
-				viewBox="0 0 24 24"
-				class="size-5"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				aria-hidden="true"
-			>
-				<path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z" />
-				<path d="M12 8.5 8 10.75v4.5L12 17.5l4-2.25v-4.5L12 8.5Z" />
-				{#if !bees.active}
-					<path d="M4 4l16 16" />
-				{/if}
-			</svg>
+			<Beehive off={!bees.active} />
 		</button>
 
 		<!--

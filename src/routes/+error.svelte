@@ -22,8 +22,7 @@
 
 	<p class="max-w-prose text-ink-muted">
 		{#if isNotFound}
-			Nothing lives at <code class="text-ink">{page.url.pathname}</code>. The hive was rebuilt and a
-			few old rooms did not survive the move.
+			Nothing lives at <code class="text-ink">{page.url.pathname}</code>.
 		{:else}
 			{page.error?.message ?? 'An unexpected error occurred.'}
 		{/if}

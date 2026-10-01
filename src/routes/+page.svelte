@@ -11,7 +11,7 @@
 
 <div class="flex flex-col gap-12">
 	<section class="flex flex-col items-start gap-4 py-8">
-		<h1 class="font-display text-4xl font-bold sm:text-5xl">BumbleBeing</h1>
+		<h1 class="font-display text-4xl font-bold sm:text-5xl">Welcome to the Hive</h1>
 		<p class="max-w-prose text-lg">
 			I'm Jackson Cmelak. I build machine learning models, systems software, and the occasional web
 			application.
