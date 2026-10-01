@@ -30,6 +30,6 @@
 			{/each}
 		</div>
 	{:else}
-		<p class="text-ink-muted">No posts yet — check back.</p>
+		<p class="text-ink-muted">No posts yet. Check back.</p>
 	{/if}
 </div>

@@ -16,8 +16,8 @@
 			index should not claim a completeness it does not have.
 		-->
 		<p class="max-w-prose text-ink-muted">
-			A few things I've built and written up — machine learning, systems work, and the occasional
-			web application.
+			A few things I've built and written up: machine learning, systems work, and the occasional web
+			application.
 		</p>
 	</header>
 
