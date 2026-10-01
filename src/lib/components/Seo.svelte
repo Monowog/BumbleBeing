@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL, absolute } from '$lib/site';
+	import { OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, absolute } from '$lib/site';
 
 	interface Props {
 		/** Page title. The site name is appended, except on the home page. */
