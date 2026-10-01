@@ -1,0 +1,52 @@
+---
+title: BoosterTutor
+blurb: A draft coach for Magic. Python works out every verdict, and the LLM only puts it into words.
+tags: [web]
+tools: [Python, FastAPI, PostgreSQL, SvelteKit, TypeScript]
+date: 2026-09-22
+repo: https://github.com/Monowog/BoosterTutor
+---
+
+BoosterTutor is a coach for Magic: the Gathering Limited. You hand it a draft or a
+sealed pool and it tells you which picks cost you, and why. Not a score out of ten.
+An actual explanation, the kind you'd get from someone sitting next to you.
+
+The whole thing rests on one rule I wrote into `CONTEXT.md` on day one: Python
+computes every fact and every verdict, and the LLM only explains them. Ask a
+language model to grade a pick and it will give you a confident number it can't back
+up. Hand it a number and ask it to explain, and it stays useful.
+
+## Grading a pick
+
+Every card gets a fitness score, which is what it's worth to your specific pool at
+that specific moment, measured in percentage points of win rate. The underlying data
+comes from [17lands](https://www.17lands.com). Putting everything on one scale means
+you can say "that card was worth 2pp less to your deck" and have it mean something.
+
+Picks are graded on the gap to the best card in the pack rather than on rank. Most
+picks are close. If you flag every pick that wasn't optimal, the three that actually
+mattered get buried under thirty that didn't. So the bands are fixed: `solid` within
+2pp, `questionable` within 4pp, `mistake` past that. If a pack had nothing at stake,
+meaning one playable, nothing scorable, or everything already `solid`, it comes back
+`indifferent` instead of graded, because no choice you could have made would have
+cost you anything.
+
+The hard part is working out what a pool is trying to become. Ten two-colour
+archetypes get scored as competing hypotheses, each with a float for how much of
+your pool it could actually play. A card's value then depends as much on what it
+commits you to as on how strong it is.
+
+## Building it
+
+The API is FastAPI and SQLAlchemy on Postgres, with Alembic for migrations, `uv` for
+packaging, and mypy, ruff and pytest running over it. The front end is SvelteKit and
+Tailwind, tested with Vitest in a real browser via Playwright.
+
+The stack isn't really the point though. `docs/decisions/` is. There are sixteen
+ADRs in there tracking how the scoring changed over time: the fitness function, the
+synergy term, the decay coefficient, and one full rewrite of the classification
+system after I realised the original was asking two questions at once. "What did
+this pick cost you?" and "is this card any good?" were sharing a single label, and
+the results read like noise.
+
+<!-- TODO: why you built this -->

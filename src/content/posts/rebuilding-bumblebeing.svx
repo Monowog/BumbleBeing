@@ -1,0 +1,106 @@
+---
+title: Rebuilding BumbleBeing
+blurb: Forty-one decisions behind rebuilding this site, including the one argument I lost and should have.
+date: 2026-09-30
+tags: [web]
+---
+
+This site used to have eighteen vendored component directories, a collapsible
+sidebar, three project pages that shared the exact same placeholder description, and
+a navigation flower whose petals linked to routes that didn't exist. It worked,
+mostly. It didn't showcase anything.
+
+So I rebuilt it. Same architecture, same palette, nothing else taken for granted.
+Before writing any code I had the design picked apart question by question: forty-one
+of them over five rounds, each one with a recommendation I could take or argue with.
+Here's what came out of it, and where the arguments were.
+
+## Audit first
+
+The most useful hour went into measuring the old site rather than designing the new
+one, and a few of the things it turned up flatly contradicted what I thought I knew
+about my own project.
+
+I'd described the palette from memory as "light beige and beige". It was actually
+white and a pretty saturated honey amber, with beige showing up in exactly one
+place: the sidebar. The honeycomb background I was quite pleased with had its two
+cell colours 1.97% apart in lightness, which is invisible on any screen you'd
+actually use. And the whole site loaded Galdeano, a font that ships one weight, then
+applied `font-extrabold` to every project title. So everything had been rendering as
+fake browser bold the entire time.
+
+None of that was visible from the inside. All three were obvious the second someone
+read the CSS back to me.
+
+## The argument I lost
+
+Trimming the project list is the one I pushed back on hardest and got wrong. I
+wanted to show eight projects. The site shows four.
+
+Four is better. Three ML projects and one systems project reads as someone who does
+ML and systems work. Eight reads as someone who has done a lot of unrelated things.
+The narrower claim is the stronger one, and I didn't see that until it was in front
+of me.
+
+## The arguments I won
+
+Seven decisions went against the advice I got, and I'd make most of them again:
+
+- **Old URLs 404 on purpose.** No redirects. The error page tells you which path you
+  missed and points you at the projects, which I like better than a silent bounce to
+  the homepage.
+- **The buzzing dots are canvas, not CSS.** I was advised against it on cost
+  grounds. It cost one shared canvas and a loop that stops when nothing is hovered.
+- **`game` ships as a tag with nothing in it**, so the next game project drops
+  straight in with no styling work.
+
+The one I'm least sure about is keeping the white background instead of moving to
+the beige I said I wanted in the first place. That one is still open. It's also a
+one line change now, which is the next bit.
+
+## Two layers of tokens
+
+The old stylesheet defined about thirty variables twice, once for light and once for
+dark, so every colour change meant two edits and the themes slowly drifted apart.
+
+The new one has three blocks. Raw primitives like `--honey-500` and `--beige-100`.
+Semantic roles mapped onto those, like `--surface` and `--ink` and `--primary`. Then
+a dark block that only reassigns the roles that actually differ. Components are
+allowed to use the semantic names and nothing else. A component that reaches for
+`--honey-500` has broken the whole arrangement, and dark mode stops being a
+one-place change.
+
+That paid off almost immediately. "Mute the primary 10% toward the background" was
+one line per theme, written as a `color-mix` against `--background` so it'll follow
+along if the background ever does become beige.
+
+## Things you can only catch by looking
+
+Two bugs survived every amount of thinking about them and died the moment something
+rendered on screen.
+
+The dark honeycomb **shouted**. Its lightness delta was correct and the tests passed,
+but the cell colour had nearly twice the chroma of the background behind it, so the
+gaps came out as bright red lines instead of texture. Turns out lightness delta on
+its own isn't enough of a spec for a texture.
+
+The buzzing dots were **invisible**. The canvas was definitely painting, I checked
+and found 121 non-transparent pixels in the buffer. At 1.2px across, not one of them
+was legible.
+
+## What the rebuild actually bought
+
+Adding a project used to mean editing a hardcoded array in the sidebar *and* writing
+a new route that repeated the same data. Now it's one Markdown file. The frontmatter
+gets validated with Zod at build time, so a missing field or a tag I made up fails
+the build and tells me which file and which field, instead of quietly rendering
+`undefined` in production.
+
+Writing that validator gave me my favourite small lesson of the whole rebuild.
+`Date.parse('2025-02-31')` doesn't fail. It cheerfully hands back a valid timestamp
+for the 3rd of March. And writing `date: 2026-09-30` in frontmatter doesn't give you
+that string either, because YAML parses it into a `Date`, which the Markdown
+preprocessor then compiles into `"2026-09-30T00:00:00.000Z"`. Three different
+shapes, and the obvious one to type is the one that surprises you.
+
+Both are handled now. I wouldn't have thought to check either.

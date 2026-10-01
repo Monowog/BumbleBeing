@@ -1,0 +1,45 @@
+---
+title: Garbage Classifier
+blurb: SVM, random forest and a CNN all sorting photos of rubbish into six materials, to see what each one buys you.
+tags: [ml]
+tools: [Python, TensorFlow, scikit-learn, Streamlit]
+date: 2023-12-07
+repo: https://github.com/Monowog/ecs171-project
+demo: https://ecs171-group27-project.streamlit.app/
+report: /GarbageClassificationReport.pdf
+credit: Team project for UC Davis ECS 171
+---
+
+Take a photo of a piece of rubbish and sort it into one of six materials: cardboard,
+glass, metal, paper, plastic, or trash. The data is the Kaggle garbage
+classification set. The question we wanted to answer was how far the classical
+methods get you before a convolutional network is worth the trouble.
+
+## Three models, same problem
+
+| Model | Test accuracy |
+| --- | --- |
+| Support vector machine | 54% |
+| Random forest | 56% |
+| Convolutional network | **74%** |
+
+The two classical models land within two points of each other, which tells you
+something on its own. All the extra flexibility in the random forest bought almost
+nothing, because what was holding both of them back was the features, not the
+classifier. The CNN works out its own features and picks up eighteen points over the
+better of the two.
+
+## The failures are more interesting than the score
+
+The per-class numbers say a lot more than 74% does. Paper is basically solved at
+0.97 recall. Glass is the worst class in the set at 0.50 recall, and most of what it
+loses goes to metal, which is why metal has the worst precision at 0.56.
+
+That confusion isn't random. Shot under the same lighting, a crushed glass fragment
+and a crumpled can look almost the same, and with a few hundred training images per
+class there isn't much for the model to separate them with.
+
+The repo also has the exploratory analysis and a small Streamlit app that runs the
+trained CNN on a photo you upload.
+
+<!-- TODO: why you built this, and what you personally built -->

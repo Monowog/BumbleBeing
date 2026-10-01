@@ -1,13 +1,36 @@
 <script lang="ts">
-  import { page } from '$app/state';
-  import BeeMovieScript from "$lib/assets/json/BeeMovie.json";
+	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
+	import { Button } from '$lib/components';
+
+	// Retired v1 URLs land here by design — /models, /about-me/* and three old
+	// project pages have no redirects, so this page has to do the work.
+	const isNotFound = $derived(page.status === 404);
 </script>
 
-<div class="flex flex-col max-w-3xl text-center justify-center items-center py-[50%] px-4 overflow-auto gap-60">
-  <p class="text-5xl text-shadow-lg text-shadow-chart-2/50">
-    Error 404: Page {page.error?.message}
-  </p>
-  <p class="bg-honeycomb-secondary outline-4 outline-[--button-secondary] rounded-lg border-10 border-transparent text-shadow-sm text-shadow-chart-3/30">
-    {BeeMovieScript.data}
-  </p>
+<div class="flex flex-col items-center gap-6 py-16 text-center">
+	<div
+		aria-hidden="true"
+		class="grid h-36 w-48 place-items-center rounded-md honeycomb text-primary [--c1:var(--background)] [--c2:var(--honeycomb-cell)] [--s:26px]"
+	>
+		<span class="font-display text-6xl font-bold">{page.status}</span>
+	</div>
+
+	<h1 class="font-display text-3xl">
+		{isNotFound ? 'This cell is empty' : 'Something went wrong'}
+	</h1>
+
+	<p class="max-w-prose text-ink-muted">
+		{#if isNotFound}
+			Nothing lives at <code class="text-ink">{page.url.pathname}</code>. The hive was rebuilt and a
+			few old rooms did not survive the move.
+		{:else}
+			{page.error?.message ?? 'An unexpected error occurred.'}
+		{/if}
+	</p>
+
+	<div class="flex flex-wrap items-center justify-center gap-3">
+		<Button variant="primary" href={resolve('/projects')}>Browse projects</Button>
+		<Button variant="outline" href={resolve('/')}>Back to the hive</Button>
+	</div>
 </div>

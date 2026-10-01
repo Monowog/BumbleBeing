@@ -1,0 +1,60 @@
+---
+title: UDP Telemetry Receiver
+blurb: A C++17 sender and receiver for a 28-byte binary format I designed, with CRC-32 and byte ordering done by hand.
+tags: [systems]
+tools: [C++17, CMake, BSD sockets]
+date: 2026-09-30
+repo: https://github.com/Monowog/udp-telemetry-receiver
+---
+
+A sender and a receiver that talk to each other over UDP using a binary protocol I
+designed, carrying simulated GPS and IMU readings. The point was to build the
+opposite of a framework project. Every byte on the wire is there because I put it
+there, and anything that would normally be a library call is written out.
+
+## The wire format
+
+Twenty-eight bytes, fixed:
+
+| Field | Bytes | Purpose |
+| --- | --- | --- |
+| `magic` | 2 | Says this is our protocol. Anything else gets dropped |
+| `version` | 1 | Format version |
+| `sensor_type` | 1 | GPS or IMU |
+| `sequence_number` | 4 | Counts up, so you can tell order and spot gaps |
+| `timestamp` | 4 | Milliseconds since the sender started |
+| `values[3]` | 12 | Three float readings |
+| `checksum` | 4 | CRC-32 over the 24 bytes before it |
+
+## The bits worth doing by hand
+
+**CRC-32 is generated, not linked.** A 256 entry lookup table built from the
+reflected `0xEDB88320` polynomial the first time it's needed, then a byte at a time
+over the payload. It's about thirty lines, and the reason to write them yourself is
+that when a packet fails validation you can actually reason about why.
+
+**Byte order is spelled out everywhere.** Every multi-byte field goes through
+`htons` or `htonl` on the way out and `ntohs` or `ntohl` on the way back, so the
+format is big-endian on the wire no matter what machine is on either end. Floats are
+the fiddly case. They get copied into a `uint32_t` with `memcpy`, byte-swapped, and
+copied back. Never cast through a pointer and never punned through a union, which
+are the two usual ways people quietly introduce undefined behaviour into a parser
+that looks like it works.
+
+**Parsing returns `std::optional<Packet>`.** A packet only gets out of that optional
+by clearing three checks: the datagram is exactly 28 bytes, the magic number
+matches, and the CRC I recompute agrees with the one in the packet. Everything else
+gets logged and dropped. If you're sitting on an open socket you should assume every
+datagram is junk until it proves otherwise.
+
+The build is CMake, with the parsing and checksum code in a static library that both
+the sender and the receiver link against, so there's only one copy of the protocol
+and the two ends can't drift apart.
+
+## Where it's at
+
+The format carries `sequence_number` and the receiver reads and prints it, but gap
+and reorder detection isn't built yet. That's next, along with proper tests for the
+codec.
+
+<!-- TODO: why you built this -->
