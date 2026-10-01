@@ -1,5 +1,11 @@
-/** Canonical origin. Hardcoded because prerendering has no real request URL. */
-export const SITE_URL = 'https://bumblebeing.com';
+/**
+ * Canonical origin. Hardcoded because prerendering has no real request URL.
+ *
+ * Note the `www`: the apex 307s to it, so that is the host actually serving
+ * pages. Pointing canonical links, og:url and the sitemap at the apex would name
+ * a URL that only redirects.
+ */
+export const SITE_URL = 'https://www.bumblebeing.com';
 
 export const SITE_NAME = 'BumbleBeing';
 

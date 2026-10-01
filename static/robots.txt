@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://bumblebeing.com/sitemap.xml
+Sitemap: https://www.bumblebeing.com/sitemap.xml
