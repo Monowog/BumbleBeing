@@ -11,7 +11,7 @@
 <div class="flex flex-col items-center gap-6 py-16 text-center">
 	<div
 		aria-hidden="true"
-		class="grid h-36 w-48 place-items-center rounded-md honeycomb text-primary [--c1:var(--background)] [--c2:var(--honeycomb-cell)] [--s:26px]"
+		class="grid h-36 w-48 place-items-center rounded-lg border border-border honeycomb text-primary-ink shadow-sm [--c1:var(--primary)] [--c2:color-mix(in_oklab,var(--primary)_86%,var(--ink))] [--s:26px]"
 	>
 		<span class="font-display text-6xl font-bold">{page.status}</span>
 	</div>
