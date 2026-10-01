@@ -1,34 +1,33 @@
 ---
 title: Bone Fracture Detector
-blurb: A ResNet transfer-learning classifier for fractures in X-rays, measured against a hand-built baseline.
+blurb: A ResNet classifier for fractures in X-rays, built after a weaker baseline so the result means something.
 tags: [ml]
 tools: [Python, PyTorch, scikit-learn, Jupyter]
 date: 2025-12-07
 repo: https://github.com/Monowog/ResNet-Fracture-Classifier
 ---
 
-A binary classifier that looks at a radiograph and decides whether a bone in it is
-fractured. The interesting part is not the final model but the gap between it and
-the baseline, which is the only way to know whether the sophistication paid for
-itself.
+A classifier that looks at an X-ray and says whether the bone in it is broken. What
+makes it worth writing up isn't the final model. It's the distance between that
+model and the simple one I built first.
 
-## Two models, deliberately
+## Two models on purpose
 
-The **baseline** does it the honest, old-fashioned way: load the images, preprocess
-them, extract features by hand, and train a support vector machine. It reached
-**58.6% accuracy** with an ROC AUC of **0.623** — better than a coin flip, and not
-by enough to be worth anything clinically.
+The baseline does it the old-fashioned way. Load the images, preprocess them, pull
+out features by hand, train a support vector machine on those. It got **58.6%
+accuracy** with an ROC AUC of **0.623**. Better than guessing, but not by enough to
+be useful for anything.
 
-The **ResNet model** replaces the hand-built features with transfer learning from a
-pre-trained network, fine-tuned on the fracture dataset. On the same 338-image test
-set it reached **83.4% accuracy**, ROC AUC **0.834**.
+The ResNet model throws out the hand-built features and uses transfer learning from
+a pre-trained network instead, fine-tuned on the fracture data. Same 338-image test
+set, **83.4% accuracy**, ROC AUC **0.834**.
 
-That is a 25-point swing, and it is the result the project exists to produce.
-Building the weak model first is what makes the strong one legible: without the
-baseline, 83% is a number with nothing to compare it to.
+That's a 25 point jump, and it's the actual result here. Building the weak model
+first is what makes the second number mean anything. Without it, 83% is just a
+number with nothing to sit next to.
 
-Work was benchmarked against a published baseline from the imaging literature
-([Int. J. Imaging Syst. Technol.](https://doi.org/10.1002/ima.22849)), so the target
-was somebody else's reported result rather than a number I picked myself.
+I checked the work against a published baseline from the imaging literature
+([Int. J. Imaging Syst. Technol.](https://doi.org/10.1002/ima.22849)), so the bar
+was someone else's reported result rather than one I'd set for myself.
 
 <!-- TODO: why you built this -->

@@ -1,52 +1,52 @@
 ---
 title: BoosterTutor
-blurb: An LLM coach for Magic drafting, where Python computes every verdict and the model only explains it.
+blurb: A draft coach for Magic. Python works out every verdict, and the LLM only puts it into words.
 tags: [web]
 tools: [Python, FastAPI, PostgreSQL, SvelteKit, TypeScript]
 date: 2026-09-22
 repo: https://github.com/Monowog/BoosterTutor
 ---
 
-BoosterTutor is a coach for Magic: the Gathering Limited. You give it a draft or a
-sealed pool, and it tells you which picks cost you equity and why — not as a
-scoreboard, but as a paragraph you could hear from a person sitting next to you.
+BoosterTutor is a coach for Magic: the Gathering Limited. You hand it a draft or a
+sealed pool and it tells you which picks cost you, and why. Not a score out of ten.
+An actual explanation, the kind you'd get from someone sitting next to you.
 
-The architecture rests on one rule, written into the project's `CONTEXT.md` on the
-first day: **Python computes every fact and every verdict; the LLM only explains
-them in prose.** That constraint is the whole design. A language model asked to
-grade a pick will produce a confident number it cannot justify; a language model
-handed a number and asked to explain it stays useful and stays honest.
+The whole thing rests on one rule I wrote into `CONTEXT.md` on day one: Python
+computes every fact and every verdict, and the LLM only explains them. Ask a
+language model to grade a pick and it will give you a confident number it can't back
+up. Hand it a number and ask it to explain, and it stays useful.
 
 ## Grading a pick
 
-Every card gets a *fitness* — its value to a specific pool at a specific moment,
-measured in percentage points of win rate, using [17lands](https://www.17lands.com)
-data as the underlying signal. Because every term lands on one interpretable scale,
-"this card was worth 2pp less to your deck" is a sentence a coach can actually say.
+Every card gets a fitness score, which is what it's worth to your specific pool at
+that specific moment, measured in percentage points of win rate. The underlying data
+comes from [17lands](https://www.17lands.com). Putting everything on one scale means
+you can say "that card was worth 2pp less to your deck" and have it mean something.
 
-Picks are then graded on the **gap** to the best card in the pack, not on rank.
-Most picks are close, and flagging every non-optimal one would bury the three that
-mattered under thirty that did not. The bands are fixed: `solid` within 2pp,
-`questionable` within 4pp, `mistake` beyond. A pack where nothing was at stake —
-one playable, nothing scorable, or every card already `solid` — is `indifferent`
-rather than graded, because no available choice cost anything.
+Picks are graded on the gap to the best card in the pack rather than on rank. Most
+picks are close. If you flag every pick that wasn't optimal, the three that actually
+mattered get buried under thirty that didn't. So the bands are fixed: `solid` within
+2pp, `questionable` within 4pp, `mistake` past that. If a pack had nothing at stake,
+meaning one playable, nothing scorable, or everything already `solid`, it comes back
+`indifferent` instead of graded, because no choice you could have made would have
+cost you anything.
 
-Most of the difficulty lives in deciding what a pool is *trying* to become. Ten
-two-colour archetypes are scored as competing hypotheses, each with a float
-describing what share of the pool it could play, and a card's value depends on the
-commitment it asks for as much as on its raw strength.
+The hard part is working out what a pool is trying to become. Ten two-colour
+archetypes get scored as competing hypotheses, each with a float for how much of
+your pool it could actually play. A card's value then depends as much on what it
+commits you to as on how strong it is.
 
 ## Building it
 
-The API is FastAPI and SQLAlchemy over Postgres, with Alembic migrations, `uv` for
-packaging, and mypy, ruff and pytest in the loop. The web client is SvelteKit and
-Tailwind, tested with Vitest in a real browser through Playwright.
+The API is FastAPI and SQLAlchemy on Postgres, with Alembic for migrations, `uv` for
+packaging, and mypy, ruff and pytest running over it. The front end is SvelteKit and
+Tailwind, tested with Vitest in a real browser via Playwright.
 
-The part worth pointing at is not the stack, though — it is `docs/decisions/`.
-Sixteen ADRs record how the scoring evolved: the fitness function itself, the
+The stack isn't really the point though. `docs/decisions/` is. There are sixteen
+ADRs in there tracking how the scoring changed over time: the fitness function, the
 synergy term, the decay coefficient, and one full rewrite of the classification
-system after the original conflated two questions ("what did this pick cost?" and
-"is this card any good?") into a single label and produced results that read as
-noise.
+system after I realised the original was asking two questions at once. "What did
+this pick cost you?" and "is this card any good?" were sharing a single label, and
+the results read like noise.
 
 <!-- TODO: why you built this -->
