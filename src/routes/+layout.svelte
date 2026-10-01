@@ -10,8 +10,13 @@
 </script>
 
 <svelte:head>
-	<!-- v1's bee mark, kept: people find a tab by its icon. -->
-	<link rel="icon" href="/lucide-lab--bee.ico" sizes="any" />
+	<!--
+		The hive-cell mark, same artwork as the apple-touch-icon and the social card.
+		The .ico carries 16/32/48/64 so the tab gets a size drawn for it rather than a
+		downscaled 180px PNG.
+	-->
+	<link rel="icon" href="/favicon.ico" sizes="any" />
+	<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 </svelte:head>
 
