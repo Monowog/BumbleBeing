@@ -5,7 +5,7 @@
 
 <Seo
 	title="Projects"
-	description="Machine learning, systems software and web applications Jackson Cmelak has built and written up."
+	description="Machine learning, systems software and web applications Jackson has built."
 />
 
 <div class="flex flex-col gap-8">
@@ -16,7 +16,7 @@
 			index should not claim a completeness it does not have.
 		-->
 		<p class="max-w-prose text-ink-muted">
-			A few things I've built and written up: machine learning, systems work, and the occasional web
+			A few of the things I've built: machine learning, systems work, and the occasional web
 			application.
 		</p>
 	</header>

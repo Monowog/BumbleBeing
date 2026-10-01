@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { SOCIAL_LINKS } from '$lib/nav';
 	import { Separator, Seo } from '$lib/components';
 
 	// One page with three anchored sections rather than v1's three routes, all of
@@ -52,18 +51,5 @@
 			<!-- TODO: hobbies -->
 		</p>
 	</section>
-
-	<Separator />
-
-	<section class="flex flex-col gap-3">
-		<h2 class="font-display text-2xl font-semibold">Elsewhere</h2>
-		<ul class="flex flex-wrap gap-4">
-			{#each SOCIAL_LINKS as link (link.href)}
-				<li>
-					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-					<a href={link.href} class="text-ink underline underline-offset-4">{link.label}</a>
-				</li>
-			{/each}
-		</ul>
-	</section>
+	
 </div>

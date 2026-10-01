@@ -4,7 +4,7 @@
 	import { Card, Chip, Seo } from '$lib/components';
 </script>
 
-<Seo title="Beelog" description="Notes on what Jackson Cmelak is building, and why." />
+<Seo title="Beelog" description="Notes on what Jackson is building, and why." />
 
 <div class="flex flex-col gap-8">
 	<header class="flex flex-col gap-2">
@@ -30,6 +30,6 @@
 			{/each}
 		</div>
 	{:else}
-		<p class="text-ink-muted">No posts yet. Check back.</p>
+		<p class="text-ink-muted">No posts yet. Check back soon.</p>
 	{/if}
 </div>

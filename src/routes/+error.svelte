@@ -29,7 +29,7 @@
 	</p>
 
 	<div class="flex flex-wrap items-center justify-center gap-3">
-		<Button variant="primary" href={resolve('/projects')}>Browse projects</Button>
-		<Button variant="outline" href={resolve('/')}>Back to the hive</Button>
+		<Button variant="primary" href={resolve('/projects')}>Browse Projects</Button>
+		<Button variant="outline" href={resolve('/')}>Back to the Hive</Button>
 	</div>
 </div>
