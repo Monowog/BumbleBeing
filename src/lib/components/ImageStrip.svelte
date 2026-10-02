@@ -38,7 +38,7 @@
 				src={image}
 				alt="{title}, screenshot {index + 1} of {images.length}"
 				loading={index === 0 ? 'eager' : 'lazy'}
-				class="w-full max-w-md shrink-0 snap-center rounded-md border border-border"
+				class="w-full max-w-md shrink-0 snap-center rounded-md border border-border shadow-soft"
 			/>
 		{/each}
 	</div>

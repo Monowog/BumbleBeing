@@ -111,6 +111,12 @@
 	--chip-game: var(--chip-game-bg);
 	--chip-game-fg: var(--chip-game-ink);
 
+	/* Shadows. Warm rather than neutral so the drop belongs to the palette, and
+	 * two layers (contact + spread) so the lift reads at any element size. */
+	--shadow-contact: oklch(0.2591 0.0967 28.8181 / 0.08);
+	--shadow-spread: oklch(0.2591 0.0967 28.8181 / 0.1);
+	--shadow-text: oklch(0.2591 0.0967 28.8181 / 0.22);
+
 	--radius: 0.375rem;
 }
 
@@ -146,6 +152,12 @@
 	--chip-systems-fg: var(--chip-systems-ink-dark);
 	--chip-game: var(--chip-game-bg-dark);
 	--chip-game-fg: var(--chip-game-ink-dark);
+
+	/* A warm tint disappears against the umber ground; the dark theme needs a
+	 * near-black at a higher alpha to read as a shadow at all. */
+	--shadow-contact: oklch(0 0 0 / 0.3);
+	--shadow-spread: oklch(0 0 0 / 0.38);
+	--shadow-text: oklch(0 0 0 / 0.55);
 }
 
 /* ---------------------------------------------------------------------------
@@ -185,6 +197,15 @@
 	--radius-md: var(--radius);
 	--radius-lg: calc(var(--radius) + 4px);
 	--radius-xl: calc(var(--radius) + 8px);
+
+	/* `shadow-soft` for anything with a box, `drop-shadow-soft` for the masked
+	 * hexagon, whose shadow has to follow the silhouette rather than the box. */
+	--shadow-soft: 0 1px 2px var(--shadow-contact), 0 4px 10px -2px var(--shadow-spread);
+	--drop-shadow-soft: 0 2px 6px var(--shadow-spread);
+	/* Inherited from <main>, so every bit of body copy picks it up and the
+	 * header and footer keep flat text. Carries its own tint rather than reusing
+	 * --shadow-contact, so text depth is tunable without moving the boxes. */
+	--text-shadow-soft: 0 1px 2px var(--shadow-text);
 }
 
 @layer base {

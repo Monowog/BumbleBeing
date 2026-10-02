@@ -15,21 +15,23 @@
 			<!-- The ring is a masked parent showing through its own padding: a masked
 				element cannot carry a border. `aspect-[0.866]` is the bounding ratio of a
 				regular hexagon, so neither the shape nor the photo is stretched. -->
-			<div class="aspect-[0.866] w-full shrink-0 bg-primary hex-clip p-2 sm:w-54 lg:w-60">
-				<img
-					src="/jackson-osaka-hex.jpg"
-					alt="Jackson Cmelak on a rooftop in Osaka, the plaza and the setting sun behind him"
-					width="1000"
-					height="1155"
-					fetchpriority="high"
-					class="h-full w-full hex-clip object-cover"
-				/>
+			<div class="w-full shrink-0 drop-shadow-soft sm:w-54 lg:w-60">
+				<div class="aspect-[0.866] w-full bg-primary hex-clip p-2">
+					<img
+						src="/jackson-osaka-hex.jpg"
+						alt="Jackson Cmelak on a rooftop in Osaka, the plaza and the setting sun behind him"
+						width="1000"
+						height="1155"
+						fetchpriority="high"
+						class="h-full w-full hex-clip object-cover"
+					/>
+				</div>
 			</div>
 			<div class="flex flex-col items-start gap-4">
 				<h1 class="font-display text-4xl font-bold sm:text-5xl">Welcome to the Hive</h1>
 				<p class="max-w-prose text-lg">
-					"Hi, I'm Jackson. I build machine learning models, systems software, and the occasional
-					web application."
+					"Hi, I'm Jackson. I like to build machine learning models, systems software, and the
+					occasional web application."
 				</p>
 				<!-- The best copy on v1, and the reason the site is called what it is. -->
 				<p class="max-w-prose text-ink-muted">

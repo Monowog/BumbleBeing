@@ -36,7 +36,7 @@
 <div
 	aria-hidden="true"
 	class={cn(
-		'flex aspect-video w-full items-center justify-center rounded-md honeycomb',
+		'flex aspect-video w-full items-center justify-center rounded-md honeycomb shadow-soft',
 		'[--c1:var(--tile-ground)] [--c2:color-mix(in_oklab,var(--tile-ink)_12%,var(--tile-ground))] [--s:22px]',
 		tint,
 		className

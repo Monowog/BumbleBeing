@@ -13,7 +13,7 @@
 
 	// Deliberately a plain rounded rectangle. Hexagonal cards force awkward text
 	// wrapping and break at every breakpoint (ADR 0002's "function over theme").
-	const base = 'flex flex-col gap-3 rounded-lg border border-border bg-surface p-4';
+	const base = 'flex flex-col gap-3 rounded-lg border border-border bg-surface p-4 shadow-soft';
 	const interactive = 'transition-colors hover:border-primary';
 </script>
 
