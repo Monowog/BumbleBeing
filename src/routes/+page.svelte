@@ -15,7 +15,9 @@
 			<!-- The ring is a masked parent showing through its own padding: a masked
 				element cannot carry a border. `aspect-[0.866]` is the bounding ratio of a
 				regular hexagon, so neither the shape nor the photo is stretched. -->
-			<div class="w-full shrink-0 hex-drift-x drop-shadow-soft sm:w-54 lg:w-60">
+			<div
+				class="mx-auto w-full max-w-64 shrink-0 hex-drift-x drop-shadow-soft sm:mx-0 sm:w-54 lg:w-60"
+			>
 				<div class="hex-drift-y">
 					<div class="aspect-[0.866] w-full bg-primary hex-clip p-2">
 						<img
@@ -29,7 +31,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex flex-col items-start gap-4">
+			<div class="flex flex-col items-center gap-4 text-center sm:items-start sm:text-left">
 				<h1 class="font-display text-4xl font-bold sm:text-5xl">Welcome to the Hive</h1>
 				<p class="max-w-prose text-lg">
 					"Hi, I'm Jackson. I like to build machine learning models, systems software, and the
@@ -40,7 +42,7 @@
 					<span class="font-display font-medium text-ink">Čmelák</span>
 					<span class="italic">(tschmeh-lahk)</span>: the Czech word for bumblebee.
 				</p>
-				<div class="flex flex-wrap gap-3 pt-2">
+				<div class="flex flex-wrap justify-center gap-3 pt-2 sm:justify-start">
 					<Button variant="primary" href={resolve('/projects')}>View projects</Button>
 					<Button variant="outline" href="/JacksonCmelakResume.pdf">Résumé</Button>
 				</div>
