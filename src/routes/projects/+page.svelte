@@ -9,7 +9,7 @@
 />
 
 <div class="flex flex-col gap-8">
-	<header class="flex flex-col gap-2">
+	<header class="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
 		<h1 class="font-display text-3xl font-bold sm:text-4xl">Projects</h1>
 		<!--
 			Deliberately not "everything I've built": the roster is curated, and the
@@ -30,6 +30,6 @@
 			{/each}
 		</div>
 	{:else}
-		<p class="text-ink-muted">Nothing here yet.</p>
+		<p class="text-center text-ink-muted sm:text-left">Nothing here yet.</p>
 	{/if}
 </div>

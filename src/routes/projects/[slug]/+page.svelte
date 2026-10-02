@@ -9,10 +9,10 @@
 <Seo title={project.title} description={project.blurb} type="article" publishedAt={project.date} />
 
 <article class="flex flex-col gap-6">
-	<header class="flex flex-col gap-3">
+	<header class="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
 		<h1 class="font-display text-3xl font-bold sm:text-4xl">{project.title}</h1>
 
-		<div class="flex flex-wrap items-center gap-2">
+		<div class="flex flex-wrap items-center justify-center gap-2 sm:justify-start">
 			{#each project.tags as tag (tag)}
 				<Chip {tag} label={tag} />
 			{/each}
@@ -25,7 +25,7 @@
 			<p class="text-sm text-ink-muted italic">{project.credit}</p>
 		{/if}
 
-		<div class="flex flex-wrap items-center gap-3">
+		<div class="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
 			{#if project.repo}
 				<Button variant="outline" size="sm" href={project.repo}>Source</Button>
 			{:else}
