@@ -9,15 +9,14 @@
 />
 
 <div class="flex flex-col gap-8">
-	<header class="flex flex-col items-center gap-2 text-center sm:items-start sm:text-left">
+	<header class="flex flex-col items-center gap-2 text-center">
 		<h1 class="font-display text-3xl font-bold sm:text-4xl">Projects</h1>
 		<!--
 			Deliberately not "everything I've built": the roster is curated, and the
 			index should not claim a completeness it does not have.
 		-->
 		<p class="max-w-prose text-ink-muted">
-			A few of the things I've built: machine learning, systems work, and the occasional web
-			application.
+			A few of the things I've built.
 		</p>
 	</header>
 

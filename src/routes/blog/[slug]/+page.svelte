@@ -9,11 +9,11 @@
 <Seo title={post.title} description={post.blurb} type="article" publishedAt={post.date} />
 
 <article class="flex flex-col gap-6">
-	<header class="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
+	<header class="flex flex-col items-center gap-3 text-center">
 		<time datetime={post.date} class="text-sm text-ink-muted">{post.date}</time>
 		<h1 class="font-display text-3xl font-bold sm:text-4xl">{post.title}</h1>
 		{#if post.tags.length > 0}
-			<div class="flex flex-wrap justify-center gap-2 sm:justify-start">
+			<div class="flex flex-wrap justify-center gap-2">
 				{#each post.tags as tag (tag)}
 					<Chip {tag} label={tag} />
 				{/each}
