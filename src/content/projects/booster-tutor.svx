@@ -31,7 +31,7 @@ meaning one playable, nothing scorable, or everything already `solid`, it comes 
 `indifferent` instead of graded, because no choice you could have made would have
 cost you anything.
 
-The hard part is working out what a pool is trying to become. Ten two-colour
+The hard part is working out what a pool is trying to become. Ten two-color
 archetypes get scored as competing hypotheses, each with a float for how much of
 your pool it could actually play. A card's value then depends as much on what it
 commits you to as on how strong it is.
@@ -45,7 +45,7 @@ Tailwind, tested with Vitest in a real browser via Playwright.
 The stack isn't really the point though. `docs/decisions/` is. There are sixteen
 ADRs in there tracking how the scoring changed over time: the fitness function, the
 synergy term, the decay coefficient, and one full rewrite of the classification
-system after I realised the original was asking two questions at once. "What did
+system after I realized the original was asking two questions at once. "What did
 this pick cost you?" and "is this card any good?" were sharing a single label, and
 the results read like noise.
 

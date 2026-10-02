@@ -21,10 +21,10 @@ The most useful hour went into measuring the old site rather than designing the 
 one, and a few of the things it turned up flatly contradicted what I thought I knew
 about my own project.
 
-I'd described the palette from memory as "light beige and beige". It was actually
+I'd described the palette from memory as "light beige and beige." It was actually
 white and a pretty saturated honey amber, with beige showing up in exactly one
 place: the sidebar. The honeycomb background I was quite pleased with had its two
-cell colours 1.97% apart in lightness, which is invisible on any screen you'd
+cell colors 1.97% apart in lightness, which is invisible on any screen you'd
 actually use. And the whole site loaded Galdeano, a font that ships one weight, then
 applied `font-extrabold` to every project title. So everything had been rendering as
 fake browser bold the entire time.
@@ -61,7 +61,7 @@ one line change now, which is the next bit.
 ## Two layers of tokens
 
 The old stylesheet defined about thirty variables twice, once for light and once for
-dark, so every colour change meant two edits and the themes slowly drifted apart.
+dark, so every color change meant two edits and the themes slowly drifted apart.
 
 The new one has three blocks. Raw primitives like `--honey-500` and `--beige-100`.
 Semantic roles mapped onto those, like `--surface` and `--ink` and `--primary`. Then
@@ -80,7 +80,7 @@ Two bugs survived every amount of thinking about them and died the moment someth
 rendered on screen.
 
 The dark honeycomb **shouted**. Its lightness delta was correct and the tests passed,
-but the cell colour had nearly twice the chroma of the background behind it, so the
+but the cell color had nearly twice the chroma of the background behind it, so the
 gaps came out as bright red lines instead of texture. Turns out lightness delta on
 its own isn't enough of a spec for a texture.
 
@@ -96,9 +96,9 @@ gets validated with Zod at build time, so a missing field or a tag I made up fai
 the build and tells me which file and which field, instead of quietly rendering
 `undefined` in production.
 
-Writing that validator gave me my favourite small lesson of the whole rebuild.
+Writing that validator gave me my favorite small lesson of the whole rebuild.
 `Date.parse('2025-02-31')` doesn't fail. It cheerfully hands back a valid timestamp
-for the 3rd of March. And writing `date: 2026-09-30` in frontmatter doesn't give you
+for March 3. And writing `date: 2026-09-30` in frontmatter doesn't give you
 that string either, because YAML parses it into a `Date`, which the Markdown
 preprocessor then compiles into `"2026-09-30T00:00:00.000Z"`. Three different
 shapes, and the obvious one to type is the one that surprises you.

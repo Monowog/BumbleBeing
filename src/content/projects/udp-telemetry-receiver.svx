@@ -38,7 +38,7 @@ that when a packet fails validation you can actually reason about why.
 format is big-endian on the wire no matter what machine is on either end. Floats are
 the fiddly case. They get copied into a `uint32_t` with `memcpy`, byte-swapped, and
 copied back. Never cast through a pointer and never punned through a union, which
-are the two usual ways people quietly introduce undefined behaviour into a parser
+are the two usual ways people quietly introduce undefined behavior into a parser
 that looks like it works.
 
 **Parsing returns `std::optional<Packet>`.** A packet only gets out of that optional

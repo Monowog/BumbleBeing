@@ -57,8 +57,8 @@ _Avoid_: Blog, journal, writing, news
 
 **Tag**:
 One member of a closed set — `game`, `ml`, `systems`, `web` — naming the kind of
-work a Project is. Drives the coloured chip on a Card. Closed because every member
-must have a colour.
+work a Project is. Drives the colored chip on a Card. Closed because every member
+must have a color.
 _Avoid_: Category, type, kind, topic, label, collection
 
 **Tool**:
@@ -95,3 +95,20 @@ _Avoid_: Particles, dots, hover effect, sparkle, jitter
 **Čmelák**:
 Czech for bumblebee (_tschmeh-lahk_), and the site's namesake.
 _Avoid_: Bumblebee (when referring to the name itself)
+
+## Prose
+
+All prose on this site is **American English**: `color`, not `color`; `gray`, not
+`grey`; `trash`, not `rubbish`; `-ize` and `-yze` endings over `-ise` and `-yse`.
+Periods and commas go inside closing quotation marks, and dates read `March 3`
+rather than `the 3rd of March`. This covers every Post and Project writeup, this
+file, the ADRs, the README, and all copy rendered in the UI.
+
+Posts and Project writeups also avoid two habits that read as machine-written: em
+dashes, and long bullet lists where prose would do. Prefer a period or a comma, and
+keep lists for things that are genuinely a set.
+
+Source code is a separate question and has not been swept. `src/lib/design/` still
+spells its identifiers and comments `color`, and renaming an exported symbol is a
+code change rather than a copy change, so leave it alone unless you are touching
+that module for another reason.

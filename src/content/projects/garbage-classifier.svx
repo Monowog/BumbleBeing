@@ -1,6 +1,6 @@
 ---
 title: Garbage Classifier
-blurb: SVM, random forest and a CNN all sorting photos of rubbish into six materials, to see what each one buys you.
+blurb: SVM, random forest and a CNN all sorting photos of trash into six materials, to see what each one buys you.
 tags: [ml]
 tools: [Python, TensorFlow, scikit-learn, Streamlit]
 date: 2023-12-07
@@ -10,7 +10,7 @@ report: /GarbageClassificationReport.pdf
 credit: Team project for UC Davis ECS 171
 ---
 
-Take a photo of a piece of rubbish and sort it into one of six materials: cardboard,
+Take a photo of a discarded item and sort it into one of six materials: cardboard,
 glass, metal, paper, plastic, or trash. The data is the Kaggle garbage
 classification set. The question we wanted to answer was how far the classical
 methods get you before a convolutional network is worth the trouble.

@@ -82,7 +82,7 @@ Error: Invalid frontmatter in ../../content/projects/booster-tutor.svx:
 **Dates work however you write them.** `date: 2026-09-30` and `date: '2026-09-30'`
 both give you `2026-09-30`. This is worth knowing because the unquoted form is not
 what it looks like: YAML parses it into a `Date`, which mdsvex then compiles into
-the module as the string `2026-09-30T00:00:00.000Z`. The schema normalises all
+the module as the string `2026-09-30T00:00:00.000Z`. The schema normalizes all
 three shapes, so you never have to think about it.
 
 A Post works the same way in `src/content/posts/`, with `title`, `date`, `blurb` and
@@ -99,7 +99,7 @@ Six hand-rolled primitives, all from `$lib/components`:
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `Button`          | Renders an `<a>` when given `href`, a `<button>` otherwise. `primary` / `outline` / `ghost`, sizes `sm` / `md` / `icon` |
 | `Card`            | Plain rounded rectangle on `--surface`. Pass `href` to make the whole card a link                                       |
-| `Chip`            | Pass `tag` for a coloured Tag chip, omit it for a neutral Tool chip                                                     |
+| `Chip`            | Pass `tag` for a colored Tag chip, omit it for a neutral Tool chip                                                      |
 | `Separator`       | `horizontal` or `vertical`                                                                                              |
 | `ImageStrip`      | CSS scroll-snap gallery. Renders **nothing** when `images` is empty                                                     |
 | `PlaceholderTile` | Honeycomb thumbnail tinted by Tag, carrying the title's initial                                                         |
