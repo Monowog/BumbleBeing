@@ -6,6 +6,7 @@
 	const sections = [
 		{ id: 'education', title: 'Education' },
 		{ id: 'experience', title: 'Experience' },
+		{ id: 'achievements', title: 'Achievements' },
 		{ id: 'hobbies', title: 'Hobbies' }
 	];
 </script>
@@ -16,8 +17,8 @@
 />
 
 <div class="flex flex-col gap-10">
-	<header class="flex flex-col items-center gap-3 text-center sm:items-start sm:text-left">
-		<h1 class="font-display text-3xl font-bold sm:text-4xl">About</h1>
+	<header class="flex flex-col gap-3">
+		<h1 class="text-center font-display text-3xl font-bold sm:text-left sm:text-4xl">About</h1>
 		<nav
 			aria-label="On this page"
 			class="flex flex-wrap justify-center gap-4 text-sm sm:justify-start"
@@ -30,17 +31,18 @@
 		</nav>
 	</header>
 
-	<section
-		id="education"
-		class="flex scroll-mt-20 flex-col items-center gap-3 text-center sm:items-start sm:text-left"
-	>
-		<h2 class="font-display text-2xl font-semibold underline underline-offset-4">Education</h2>
+	<section id="education" class="flex scroll-mt-20 flex-col gap-3">
+		<h2
+			class="mb-3 text-center font-display text-2xl font-semibold underline underline-offset-4 sm:text-left"
+		>
+			Education
+		</h2>
 
 		<!-- Newest first, the same order the Experience section runs in. Each school's
 			dates sit tight under its name, hence the gap-1 pairing. -->
-		<div class="flex flex-col items-center gap-6 sm:items-start">
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+		<div class="flex flex-col gap-6">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">University of California, Davis</h3>
 					<p class="text-sm text-ink-muted">
 						B.S. Computer Science – September 2022 to December 2025
@@ -61,8 +63,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Diablo Valley College</h3>
 					<p class="text-sm text-ink-muted">A.S. Computer Science – August 2019 to June 2022</p>
 				</div>
@@ -78,17 +80,18 @@
 
 	<Separator />
 
-	<section
-		id="experience"
-		class="flex scroll-mt-20 flex-col items-center gap-3 text-center sm:items-start sm:text-left"
-	>
-		<h2 class="font-display text-2xl font-semibold underline underline-offset-4">Experience</h2>
+	<section id="experience" class="flex scroll-mt-20 flex-col gap-3">
+		<h2
+			class="mb-3 text-center font-display text-2xl font-semibold underline underline-offset-4 sm:text-left"
+		>
+			Experience
+		</h2>
 
 		<!-- Newest first by start date, same shape as Education: title, then employer
 			and dates, then the prose. -->
-		<div class="flex flex-col items-center gap-6 sm:items-start">
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+		<div class="flex flex-col gap-6">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Freelance Web Developer</h3>
 					<p class="text-sm text-ink-muted">Self-employed – December 2025 to present</p>
 				</div>
@@ -100,8 +103,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Summer Event Security Staff</h3>
 					<p class="text-sm text-ink-muted">
 						Festival of Arts and Pageant of the Masters – June 2023 to August 2024
@@ -115,8 +118,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Data Analyst Intern</h3>
 					<p class="text-sm text-ink-muted">US Cryotherapy – June 2022 to August 2022</p>
 				</div>
@@ -131,8 +134,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Cryotherapy Technician</h3>
 					<p class="text-sm text-ink-muted">US Cryotherapy – October 2018 to July 2022</p>
 				</div>
@@ -143,8 +146,8 @@
 				</p>
 			</div>
 
-			<div class="flex flex-col items-center gap-3 sm:items-start">
-				<div class="flex flex-col items-center gap-1 sm:items-start">
+			<div class="flex flex-col gap-3">
+				<div class="flex flex-col gap-1">
 					<h3 class="font-display text-xl font-semibold">Robotics Programmer</h3>
 					<p class="text-sm text-ink-muted">
 						FIRST Team 1458, Red Tie Robotics – November 2015 to April 2017
@@ -161,11 +164,31 @@
 
 	<Separator />
 
-	<section
-		id="hobbies"
-		class="flex scroll-mt-20 flex-col items-center gap-3 text-center sm:items-start sm:text-left"
-	>
-		<h2 class="font-display text-2xl font-semibold underline underline-offset-4">Hobbies</h2>
+	<section id="achievements" class="flex scroll-mt-20 flex-col gap-3">
+		<h2
+			class="mb-3 text-center font-display text-2xl font-semibold underline underline-offset-4 sm:text-left"
+		>
+			Achievements
+		</h2>
+		<ul class="max-w-prose list-disc space-y-2 ps-5">
+			<li>Eagle Scout, Troop 36 in Danville, California.</li>
+			<li>
+				Competitive Magic: the Gathering player, with over $20,000 won in cash and product prizing.
+			</li>
+			<li>
+				Regular Red Cross blood donor, giving double red cell (2RBC) donations three times a year.
+			</li>
+		</ul>
+	</section>
+
+	<Separator />
+
+	<section id="hobbies" class="flex scroll-mt-20 flex-col gap-3">
+		<h2
+			class="mb-3 text-center font-display text-2xl font-semibold underline underline-offset-4 sm:text-left"
+		>
+			Hobbies
+		</h2>
 		<p class="max-w-prose">
 			I design and build board and card games. Multi-Task King came out of that, a digital port of a
 			physical game I made about how dopaminergic stimuli, the endless scroll and the short-form
