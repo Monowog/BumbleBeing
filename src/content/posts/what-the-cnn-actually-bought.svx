@@ -1,0 +1,104 @@
+---
+title: What the CNN Actually Bought
+blurb: Three models sorting photos of trash into six materials, and what the eighteen accuracy points cost us.
+date: 2026-10-01
+tags: [ml]
+---
+
+For a class project at UC Davis, four of us built three models to sort photos of
+trash into six materials: cardboard, glass, metal, paper, plastic, and a catch-all
+trash class. A support vector machine, a random forest, and a convolutional network,
+all pointed at the same 2,500 images from Kaggle.
+
+The usual way to write this up is to report that the CNN won and move on. That skips
+the only interesting part. We ran three models because we wanted to know where the
+jump happens, and the honest answer is that two of the three were held back by
+something that had nothing to do with the model we chose.
+
+## The two classical models agreed with each other
+
+The SVM finished at 54% test accuracy. The random forest finished at 56%. Two points
+apart.
+
+That gap is the finding. A random forest with 200 trees and no depth limit is a far
+more flexible model than a linear SVM, and it gave us almost nothing for the extra
+flexibility. When a weak model and a much stronger one land in the same place, the
+model is not what is limiting you. The features are.
+
+Both classifiers saw the same inputs, and those inputs were lossy by construction. We
+rescaled every image to 128 by 96 pixels, converted it to grayscale, and ran it
+through a histogram of oriented gradients transform. Grayscale alone throws away the
+single most useful signal in the whole problem. Brown cardboard and clear glass and
+gray metal are substantially a color question, and we deleted color before either
+model got to look. The grid search we ran over the HOG parameters was tuning the
+knobs on a sealed box. It moved the SVM from 50% to 54%, and that was the ceiling.
+
+## The network learned the thing we had been deleting
+
+The CNN reached 73.7% validation accuracy on the same dataset, roughly eighteen
+points above the better classical model. It saw the images in color at full size and
+worked out its own features instead of accepting ours.
+
+So the eighteen points are not really a story about convolutions beating decision
+trees. They are a story about a model that gets to choose its own representation
+beating two models that had to use a representation we picked for them before we knew
+what mattered.
+
+## The part that was not free
+
+The classical models were cheap. Write the pipeline, hand the grid search a few
+parameter sets, let it run, read the number. Neither one fought us.
+
+The CNN fought us the whole way. The first version underfit, so we added layers and
+convolutional filters, and it went straight past the target into heavy overfitting.
+Pulling it back took batch normalization, dropout after the dense layers, and both L1
+and L2 regularization. Then the loss curve started oscillating as it approached
+convergence, which meant dropping the learning rate and raising both the epoch count
+and the early stopping patience to give it room to settle. It was set for 200 epochs
+and stopped at 70. The final model still ended with validation loss slightly above
+training loss, so it is still a little overfit, and we shipped it anyway because
+convergence mattered more to us than squeezing out another point.
+
+None of that effort shows up in a table of three accuracy numbers. It is most of what
+we actually spent on the project.
+
+## The failures were more informative than the scores
+
+Per-class results told us more than any of the headline figures. Paper came out
+essentially solved at 0.97 recall. Glass was the worst class at 0.50 recall, and most
+of what glass lost went to metal, which is why metal ended up with the worst
+precision in the set at 0.56.
+
+That confusion is not noise. Photograph a crushed glass fragment and a crumpled can
+under the same lighting and they look close to identical, and with a few hundred
+training images per class there is not much left for a model to separate them with.
+Fixing that is a camera and dataset problem, not a hyperparameter problem.
+
+The random forest had a stranger failure. Its precision on plastic was 100%, meaning
+every single plastic prediction it made was correct, while its recall was 33%. It
+missed two thirds of the actual plastic in the test set. A model that is right every
+time it speaks and silent most of the time looks great in one column and is nearly
+useless in practice, which is a good argument against ever reading precision by
+itself.
+
+We also kept the trash class, even though it had only 137 images against paper's 594
+and dragged the overall number down. Dropping it or oversampling it would have bought
+us a better score for a model that could no longer handle the one case a real sorting
+line sees constantly, which is garbage that does not fit any of your categories.
+
+## What I would do differently
+
+Keep the baselines. Running the SVM and the random forest first is what made the
+CNN's result mean anything, and the two of them agreeing is what pointed at the
+preprocessing.
+
+What I would change is the preprocessing itself. Running the classical models a
+second time on color features, or on something closer to the raw pixels, would have
+separated two questions we ended up answering together: how much of the eighteen
+points came from the convolutional architecture, and how much came from simply not
+throwing away color. I still do not know the split, and I could have found out in an
+afternoon.
+
+The [writeup for the project](/projects/garbage-classifier) has the numbers in
+table form, along with the full report and a small app that runs the trained CNN on a
+photo you upload.
