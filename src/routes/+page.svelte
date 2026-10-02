@@ -15,16 +15,18 @@
 			<!-- The ring is a masked parent showing through its own padding: a masked
 				element cannot carry a border. `aspect-[0.866]` is the bounding ratio of a
 				regular hexagon, so neither the shape nor the photo is stretched. -->
-			<div class="w-full shrink-0 drop-shadow-soft sm:w-54 lg:w-60">
-				<div class="aspect-[0.866] w-full bg-primary hex-clip p-2">
-					<img
-						src="/jackson-osaka-hex.jpg"
-						alt="Jackson Cmelak on a rooftop in Osaka, the plaza and the setting sun behind him"
-						width="1000"
-						height="1155"
-						fetchpriority="high"
-						class="h-full w-full hex-clip object-cover"
-					/>
+			<div class="w-full shrink-0 hex-drift-x drop-shadow-soft sm:w-54 lg:w-60">
+				<div class="hex-drift-y">
+					<div class="aspect-[0.866] w-full bg-primary hex-clip p-2">
+						<img
+							src="/jackson-osaka-hex.jpg"
+							alt="Jackson Cmelak on a rooftop in Osaka, the plaza and the setting sun behind him"
+							width="1000"
+							height="1155"
+							fetchpriority="high"
+							class="h-full w-full hex-clip object-cover"
+						/>
+					</div>
 				</div>
 			</div>
 			<div class="flex flex-col items-start gap-4">

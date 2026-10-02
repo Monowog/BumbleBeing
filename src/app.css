@@ -272,6 +272,93 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * The hero headshot's drift.
+ *
+ * Two animations on two nested elements rather than one: 19s and 13s are
+ * coprime, so the pair only lines up again after about four minutes and the
+ * motion never reads as a loop. Irregular keyframe stops keep each axis from
+ * looking like a metronome, and the slight rotation on the vertical pass is
+ * what sells the spring rather than a slide.
+ *
+ * `translate` and `rotate` are the independent transform properties, so these
+ * compose with any Tailwind transform utility instead of fighting it.
+ * ------------------------------------------------------------------------- */
+@keyframes hex-drift-x {
+	0% {
+		translate: 0;
+	}
+	23% {
+		translate: 2px;
+	}
+	41% {
+		translate: -2px;
+	}
+	67% {
+		translate: 3px;
+	}
+	84% {
+		translate: -1px;
+	}
+	100% {
+		translate: 0;
+	}
+}
+
+@keyframes hex-drift-y {
+	0% {
+		translate: 0 0;
+		rotate: 0deg;
+	}
+	19% {
+		translate: 0 -6px;
+		rotate: 0.5deg;
+	}
+	44% {
+		translate: 0 4px;
+		rotate: -0.4deg;
+	}
+	61% {
+		translate: 0 -3px;
+		rotate: 0.6deg;
+	}
+	88% {
+		translate: 0 5px;
+		rotate: -0.3deg;
+	}
+	100% {
+		translate: 0 0;
+		rotate: 0deg;
+	}
+}
+
+@utility hex-drift-x {
+	animation: hex-drift-x 19s ease-in-out infinite;
+
+	/* Someone who asked their OS for less movement gets a still photo, the same
+	 * rule the Bees follow. */
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
+	}
+}
+
+@utility hex-drift-y {
+	animation: hex-drift-y 13s ease-in-out infinite;
+
+	@media (prefers-reduced-motion: reduce) {
+		animation: none;
+	}
+}
+
+/* Hovering freezes the drift where it stands. Unlayered, so it outranks the two
+ * utilities above without needing !important, and it has to name the inner
+ * element too: the vertical pass runs on its own element, and pausing only the
+ * outer one would leave the photo still bobbing under the cursor. */
+.hex-drift-x:hover,
+.hex-drift-x:hover .hex-drift-y {
+	animation-play-state: paused;
+}
+
+/* ---------------------------------------------------------------------------
  * Typography plugin colours, mapped onto the semantic layer.
  *
  * The plugin colours headings, inline code, links, table headers, rules and
