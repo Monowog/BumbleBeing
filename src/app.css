@@ -234,6 +234,23 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * A pointy-top hexagon mask with softened points, matching the orientation of
+ * the Honeycomb's cells. Pair it with `aspect-[0.866]`, the bounding ratio of a
+ * regular hexagon, so the shape is never stretched.
+ *
+ * A mask rather than `clip-path: polygon()` because a polygon's corners cannot
+ * be rounded: the SVG draws the hexagon inset by the corner radius and strokes
+ * it back out with round joins, which lands the outer edge on the box with the
+ * points taken off. A masked element cannot show a border either, so the ring
+ * is a masked parent showing through its own padding.
+ * ------------------------------------------------------------------------- */
+@utility hex-clip {
+	mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 86.6 100' preserveAspectRatio='none'><path d='M43.30 6.93 L80.60 28.46 L80.60 71.54 L43.30 93.07 L6.00 71.54 L6.00 28.46 Z' fill='black' stroke='black' stroke-width='12' stroke-linejoin='round'/></svg>");
+	mask-size: 100% 100%;
+	mask-repeat: no-repeat;
+}
+
+/* ---------------------------------------------------------------------------
  * Typography plugin colours, mapped onto the semantic layer.
  *
  * The plugin colours headings, inline code, links, table headers, rules and
